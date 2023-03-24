@@ -1,7 +1,7 @@
 # routes the fastapi with functionalitites
 from fastapi import APIRouter, HTTPException, Depends
 from models import user, ship, login
-from utils import Hash
+from passwordencryption import Hash
 
 # import function from other user defined python files
 from database import conn
