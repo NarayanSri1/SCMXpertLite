@@ -1,0 +1,10 @@
+typing
+fastapi
+fastapi.responses
+pydantic
+hashing
+jwttoken
+oauth
+fastapi.security
+fastapi.middleware.cors
+PyJWT
