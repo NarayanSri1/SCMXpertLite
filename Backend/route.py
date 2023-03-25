@@ -1,7 +1,8 @@
 # routes the fastapi with functionalitites
 from fastapi import APIRouter, HTTPException, Depends
 from models import user, ship, login
-from passwordencryption import Hash
+from utils import Hash
+from validation import validation
 
 # import function from other user defined python files
 from database import conn
@@ -14,6 +15,7 @@ add=APIRouter()
 @add.post('/signup')
 async def create_user(Signup: user):
     email_check=conn.SCMXpert.Sign_up.find_one({"emailid":Signup.emailid})
+    validation(Signup)
     if email_check:
         raise HTTPException(
             status_code=400,detail="Email already exists."

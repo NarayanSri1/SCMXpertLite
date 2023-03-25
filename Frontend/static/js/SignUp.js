@@ -7,15 +7,16 @@
     var json = document.getElementById("jsons")
    
     function getinput(){
-      if(validationuser()==true &&
-      validationemail()==true &&
-      validationpwd()==true &&
-      validationcpwd()==true){
-        dataload();
-      }
-      else{
-        validation();
-      }
+      dataload();
+      // if(validationuser()==true &&
+      // validationemail()==true &&
+      // validationpwd()==true &&
+      // validationcpwd()==true){
+      //   dataload();
+      // }
+      // else{
+      //   validation();
+      // }
     }
 
     function validation(){
@@ -42,9 +43,12 @@
             // console.log("Registered Successfully")
               // when call is sucessfull
            },
-           error: function (err) {
-            console.log(err)
+           error: function (xhr) {
+             console.log(xhr.responseJSON.detail)
            // check the err for error details
+             if (xhr.responseJSON.detail=="Invalid Password."){
+              validationpwd(xhr.responseJSON.detail);
+             }
            }
         }); // ajax call closing
         console.log(json.innerHTML=JSON.stringify(data))
@@ -92,14 +96,14 @@
       }
     }
 
-    function validationpwd(){
+    function validationpwd(value){
       var c  = password.value;
       var strength = 0;
       var tip = "";
       let pwdErrorMsg = document.getElementById("errorMessagePwd");
       if (c==""){
         pwdErrorMsg.style.display = "flex";
-        pwdErrorMsg.innerHTML ="Please Enter Your Password";
+        pwdErrorMsg.innerHTML =value;
         return false;
       }
 
