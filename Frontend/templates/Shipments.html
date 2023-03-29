@@ -5,59 +5,88 @@
         <meta charset="UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-        <link rel="stylesheet" href="/Frontend/static/css/Shipments.css">
-        <link rel="stylesheet" href="/Frontend/static/css/Home.css">
+        <link rel="stylesheet" href="../static/css/Shipments.css">
+        <link rel="stylesheet" href="../static/css/Home.css">
     </head>
     <body>
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            <a href="/Frontend/templates/Dashboard.html">Home</a>
-            <a href="/Frontend/templates/Shipments.html">Shipment Page</a>
-            <a href="/Frontend/templates/SignUp.html">Device Data Stream</a>
-            <a href="/Frontend/templates/Login.html">Logout</a>
+            <a href="../templates/Dashboard.html">Home</a>
+            <a href="../templates/Shipments.html">Shipment Page</a>
+            <a href="#">Device Data Stream</a>
+            <a href="../templates/Login.html">Logout</a>
         </div>
         <div id="main">
             <button class="openbtn" onclick="openNav()">☰</button>
         </div>
         <div class="card">
-            <div class="container">
-                <label for="siname">Shipment/Invoice Number</label> <input type ="id" id="sinum" class="info" placeholder="Shipment/Invoice Number"> <br>
-                <label for="cnname">Container Number</label> <input type="id" class="info" id="cnum" placeholder="Container Number"> <br>
-                <label for="sdesc">Shipment Description</label> <input type="text" class="info" id="sdesc" placeholder="Enter Your Description"> <br>
+            <div class="container" id="form">
+                <span class="error-message" id="errorm">Error</span>
+                <label for="siname">Shipment/Invoice Number</label>
+                <input type ="id" id="sinum" class="info" placeholder="Shipment/Invoice Number">
+
+                <br>
+                <label for="cnname">Container Number</label>
+                <input type="id" class="info" id="cnum" placeholder="Container Number">
+
+                <br>
+                <label for="sdesc">Shipment Description</label>
+                <input type="text" class="info" id="sdesc" placeholder="Enter Your Description">
+               
+                <br>
                 <label for="rdetails">Route Details</label>
-                <select class="dropdown" id="rdetails"><option value="" disabled selected hidden>Select Route</option><option><a href="The English Channel">The English Channel</a></option><option><a href="Panama Canal">Panama Canal</a></option><option><a href="Suez Canal">Suez Canal</a></option></select><br>
+                <select class="dropdown" id="rdetails">
+                    <option value="" disabled selected hidden>Select Route</option><option>
+                        <a href="The English Channel">The English Channel</a></option>
+                        <option><a href="Panama Canal">Panama Canal</a></option>
+                        <option><a href="Suez Canal">Suez Canal</a></option></select>
+                        
+                        <br>
                 <label for="gdtypes">Goods Type</label>
-                <select class="dropdown" id="gdtypes" ><option value="" disabled selected hidden>Select Good Type</option><option><a href="Machinery">Machinery</a></option><option><a href="Livestock">Livestock</a></option><option><a href="Fuel">Fuel</a></option> </select><br>
+                <select class="dropdown" id="gdtypes">
+                    <option value="" disabled selected hidden>Select Good Type</option><option>
+                        <a href="Machinery">Machinery</a></option>
+                        <option><a href="Livestock">Livestock</a></option>
+                        <option><a href="Fuel">Fuel</a></option></select>
+                        
+                        <br>
                 <label for="device">Device</label>
-                <select class="dropdown" id="device" ><option value="" disabled selected hidden>Select Device</option><option><a href="Electronics">Electronics</a></option><option><a href="Livestock">Livestock</a></option><option><a href="Fuel">Fuel</a></option> </select><br>
-                <label for="exdate">Expected Delivery Date</label> <input type="date" class="info" id="exdate"  placeholder="Expected Delivery Date"> <br>
-                <label for="ponum">PO Number</label> <input type="id" class="info" id="ponum" placeholder="PO Number"> <br>
-                <label for="delnum">Delivery Number</label><input type="id" class="info" id="delnum" placeholder="Delivery Number"><br>
-                <label for="ndcnum">NDC Number</label><input type="id" class="info" id="ndcnum" placeholder="NDC Number"><br>
-                <label for="bid">Batch ID</label> <input type="id" class="info" id="bid"  placeholder="Batch Id"><br>
-                <label for="goodsno">Serial Number of Goods</label><input type="id" class="info" id="goodsno" placeholder="Serial Number of goods">
+                <select class="dropdown" id="device">
+                    <option value="" disabled selected hidden>Select Device</option>
+                    <option><a href="Electronics">Electronics</a></option>
+                    <option><a href="Livestock">Livestock</a></option>
+                    <option><a href="Fuel">Fuel</a></option> </select>
+                    
+                    <br>
+                <label for="exdate">Expected Delivery Date</label>
+                <input type="date" class="info" id="exdate"  placeholder="Expected Delivery Date">
+                
+                <br>
+                <label for="ponum">PO Number</label><input type="id" class="info" id="ponum" placeholder="PO Number">
+                
+                <br>
+                <label for="delnum">Delivery Number</label>
+                <input type="id" class="info" id="delnum" placeholder="Delivery Number">
+                
+                <br>
+                <label for="ndcnum">NDC Number</label>
+                <input type="id" class="info" id="ndcnum" placeholder="NDC Number">
+                
+                <br>
+                <label for="bid">Batch ID</label>
+                <input type="id" class="info" id="bid"  placeholder="Batch Id">
+                
+                <br>
+                <label for="goodsno">Serial Number of Goods</label>
+                <input type="id" class="info" id="goodsno" placeholder="Serial Number of goods">
             </div>
-            <!-- <div class="container">
-                <input type ="id" class="info" placeholder="Shipment/Invoice Number"><br>
-                <input type="id" class="info" placeholder="Container Number"><br>
-                <input type="text" class="info" placeholder="Enter Your Description"><br>
-                <select class="dropdown" option value="Select Route">Select Route</option> <a href=""> </a></option><option><a href=""> </a></option><option><a href=""> </a></option> </select><br>
-                <select class="dropdown"> <option value="Select Goods">Select Goods</option> <option> <a href="Machinery">Machinery</a></option><option><a href="Livestock">Livestock</a></option><option><a href="Fuel">Fuel</a></option> </select><br>
-                <option value="Select Device">Select Device</option> <option> <a href=""> </a></option><option><a href=""> </a></option><option><a href=""> </a></option> </select><br>
-                <input type="date" class="info" placeholder="Expected Delivery Date"><br>
-                <input type="id" class="info" placeholder="PONumber"><br>
-                <input type="id" class="info" placeholder="DeliveryNumber"><br>
-                <input type="id" class="info" placeholder="NDCNumber"><br>
-                <input type="id" class="info" placeholder="Batch Id"><br>
-                <input type="id" class="info" placeholder="Serial Number of goods">
-            </div> -->
             <br>
                 <div class="d-flex justify-content-around">
                     <button type="submit" class="button" id="subbtn" onclick="getbulkinput()">Submit Shipment</button>
-                    <button type="button" class="button" id="canbtn">Cancel Shipment</button>
+                    <button type="reset" class="button" id="canbtn" onclick="clearinput()">Cancel Shipment</button>
                 </div>
         </div>
-        <script type="text/javascript" src="/Frontend/static/js/Shipments.js"></script>
-        <script type="text/javascript" src="/Frontend/static/js/Home.js"></script>
+        <script type="text/javascript" src="../static/js/Shipments.js"></script>
+        <script type="text/javascript" src="../static/js/Home.js"></script>
     </body>
 </html>

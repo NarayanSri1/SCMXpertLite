@@ -1,22 +1,20 @@
 // Assigning varibales to HTML input fields
-
     var username =  document.getElementById("uname")
     var email =  document.getElementById("semail")
     var password = document.getElementById("spwd")
     var cpassword = document.getElementById("scpwd") 
     var json = document.getElementById("jsons")
-   
+    
     function getinput(){
-      dataload();
-      // if(validationuser()==true &&
-      // validationemail()==true &&
-      // validationpwd()==true &&
-      // validationcpwd()==true){
-      //   dataload();
-      // }
-      // else{
-      //   validation();
-      // }
+      if(validationuser()==true &&
+      validationemail()==true &&
+      validationpwd()==true &&
+      validationcpwd()==true){
+        dataload();
+      }
+      else{
+        validation();
+      }
     }
 
     function validation(){
@@ -24,6 +22,12 @@
       validationemail();
       validationpwd();
       validationcpwd();
+    }
+
+    function clearinput(){
+      username.value=""
+      email.value=""
+      password.value=""
     }
 
     function dataload(){
@@ -39,22 +43,33 @@
           contentType: "application/json",
           data: JSON.stringify(data),
           success: function (result) {
-            alert("Registered Successfully")
-            // console.log("Registered Successfully")
-              // when call is sucessfull
+            clearinput();
+            console.log(result)
+            window.location.href = "../../Frontend/templates/Login.html"
            },
            error: function (xhr) {
              console.log(xhr.responseJSON.detail)
            // check the err for error details
-             if (xhr.responseJSON.detail=="Invalid Password."){
-              validationpwd(xhr.responseJSON.detail);
+             let emailErrorMsg = document.getElementById("errorMessageEmail");
+             let pwdErrorMsg = document.getElementById("errorMessagePwd");
+             if(xhr.responseJSON.detail=="User already exists."){
+              emailErrorMsg.style.display = "flex";
+              emailErrorMsg.innerHTML ="User already exists.";
+             return false
              }
+
+             if(xhr.responseJSON.detail=="Password doesn't follow pattern."){
+              pwdErrorMsg.style.display = "flex";
+              pwdErrorMsg.innerHTML = "Password doesn't follow pattern.";
+             }
+
+          //  else if (xhr.responseJSON.detail=="Invalid Password."){
+          //    validationpwd(xhr.responseJSON.detail);
+          //    }
            }
         }); // ajax call closing
         console.log(json.innerHTML=JSON.stringify(data))
     }
-
-    // ajax function to remove all 
 
     function validationuser(){
       var a  = username.value;
@@ -81,7 +96,7 @@
       }
     }
 
-    function validationemail(){
+    function validationemail(value){
       var b  = email.value;
       let emailErrorMsg = document.getElementById("errorMessageEmail");
       if (b==""){
@@ -96,14 +111,14 @@
       }
     }
 
-    function validationpwd(value){
+    function validationpwd(){
       var c  = password.value;
       var strength = 0;
       var tip = "";
       let pwdErrorMsg = document.getElementById("errorMessagePwd");
       if (c==""){
         pwdErrorMsg.style.display = "flex";
-        pwdErrorMsg.innerHTML =value;
+        pwdErrorMsg.innerHTML="Please Enter your password.";
         return false;
       }
 
@@ -172,39 +187,3 @@
         return true;
       }
     }
-
-    // *additional code and comments*
-
-    // function hideErrorMsg(){
-    //   document.getElementById("errorMessageUserName").style.display = "none";
-    //   document.getElementById("errorMessageEmail").style.display = "none";
-      
-    // }
-
-    // bt.addEventListener("click", function(){  
-    //   var data = {
-    //     "Email Id":email.value,
-    //     "Password":pwd.value
-    //   }
-    //   console.log(json.innerHTML=JSON.stringify(data))
-    // })
-
-    // function getinput(){
-      // console.log(Array)
-    //   let einput=String(document.getElementById("semail").value);
-    //   let ninput=String(document.getElementById("uname").value);
-    //   let pinput=String(document.getElementById("spwd").value);
-    //   let cpinput=String(document.getElementById("scpwd").value);
-    //   console.log(ninput+einput+pinput+cpinput);
-    // }
-
-     // function signup(form){
-    //   var uname = form.username.value;
-    //   var xmlHTTP = new XMLHttpRequest();
-    //   xmlHTTP.open("post","Login",true);
-    //   xmlHTTP.onreadystatechange = function(){
-    //     if(xmlHTTP.readyState == 4 && xmlHTTP.status == 200){
-    //       results();
-    //     }
-    //   }
-    // }

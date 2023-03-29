@@ -11,12 +11,27 @@
   var ndcnum = document.getElementById("ndcnum")
   var bid =  document.getElementById("bid")
   var goodsno = document.getElementById("goodsno")
-  
+  var error = document.getElementById("errorm")
 
   function getbulkinput(){
       dataload();
-  } 
-  
+  }
+
+  function clearinput(){
+    sinum.value=""
+    cnum.value=""
+    sdesc.value=""
+    rdetails.value=""
+    gdtypes.value=""
+    device.value=""
+    exdate.value=""
+    ponum.value=""
+    delnum.value=""
+    ndcnum.value=""
+    bid.value=""
+    goodsno.value=""
+  }
+
   function dataload(){
       var data = {
         "Shipment_Invoice_Number": sinum.value,
@@ -35,36 +50,28 @@
         $.ajax({
           url: "http://127.0.0.1:8000/shipment", 
           type: "POST",
+          headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
           dataType: "json",
           contentType: "application/json",
           data: JSON.stringify(data),
           success: function (result) {
-            alert("Data Loaded Successfully")
+            error.style.display="flex";
+            error.innerHTML="Data Loaded Successfully"
+            error.style.color="green"
+            console.log(result)
             // console.log("Registered Successfully")
               // when call is sucessfull
            },
-           error: function (err) {
-            console.log(err)
-           // check the err for error details
-           }
+           error: function e(xhr){
+            if(xhr.responseJSON.detail=="Please Fill All Details"){
+              error.style.display="flex";
+              error.innerHTML="Please Fill All Details"
+            }
+            else if (xhr.responseJSON.detail=="PO_Number should be a number of 6 digits"){
+              error.style.display="flex";
+              error.innerHTML="PO_Number should be a number of 6 digits"
+            }          
+          }
         }); // ajax call closing
         // console.log(json.innerHTML=JSON.stringify(data))
-    }
-
-    var sinum =  document.getElementById("sinum")
-    var cnum = document.getElementById("cnum")
-    var sdesc= document.getElementById("sdesc")
-    var rdetails =  document.getElementById("rdetails")
-    var gdtypes = document.getElementById("gdtypes")
-    var device = document.getElementById("device")
-    var exdate = document.getElementById("exdate")
-    var ponum =  document.getElementById("ponum")
-    var delnum = document.getElementById("delnum")
-    var ndcnum = document.getElementById("ndcnum")
-    var bid =  document.getElementById("bid")
-    var goodsno = document.getElementById("goodsno")
-    
-
-    function valsi(){
-      var a = sinum.value;
     }

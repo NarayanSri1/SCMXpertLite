@@ -58,6 +58,11 @@ label {
     margin:5px
 }
 
+.error-message{
+    color: #e24b37;
+    font-size: 12px;
+    display: none;
+}
 
 @media only screen and (max-width: 500px) {
     .card {

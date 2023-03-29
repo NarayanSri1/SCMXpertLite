@@ -1,10 +1,9 @@
 // Assigning varibales to HTML input fields
   // --onclick() function
-    var emailid =  document.getElementById("email")
-    var password = document.getElementById("pwd")
+    let emailid =  document.getElementById("email")
+    let password = document.getElementById("pwd")
     // var json = document.getElementById("json")
 
-    // Captcha js
     let captchaText = document.querySelector('#captcha');
     var ctx = captchaText.getContext("2d");
     ctx.font = "30px Roboto";
@@ -42,11 +41,11 @@
           if (userText.value === c) {
             output.classList.add("correctCaptcha");
             output.innerHTML = "Correct!";
-            loginButton.style.display="initial"
+            loginButton.style.display="initial";
           } else {
             output.classList.add("incorrectCaptcha");
-            output.innerHTML = "Incorrect, please try again";
-            loginButton.style.display="none"
+            output.innerHTML = "Incorrect, please try again.";
+            loginButton.style.display="none";
           }
           });
         refreshButton.addEventListener('click', function() {
@@ -61,10 +60,16 @@
             output.innerHTML = "";
             });
 
+    function clearinput(){
+      emailid.value=""
+      password.value=""
+    }
+
     function loadinput(){
       if(validationEmail()==true &&
       validationPwd()==true){
         dataload();
+        clearinput();
       }
       else{
         validation();
@@ -94,8 +99,19 @@
               // redirecting to Dashboard
               window.location.href = "../../Frontend/templates/Dashboard.html"
              },
-             error: function (err) {
-              console.log(err)
+             error: function(xhr) {
+              let emailErrorMsg = document.getElementById("errorMessageEmail")
+              let pwdErrorMsg = document.getElementById("errorMessagePwd")
+              if(xhr.responseJSON.detail=="Email not found."){
+                emailErrorMsg.style.display="flex";
+                emailErrorMsg.innerHTML="Email not found.";
+                return false
+              }
+              else if(xhr.responseJSON.detail=="Incorrect Password."){
+                pwdErrorMsg.style.display="flex";
+                pwdErrorMsg.innerHTML="Incorrect Password.";
+                return false
+              }
              // check the err for error details
              }
           }); // ajax call closing
@@ -131,12 +147,3 @@
           return true;
         }
       }
-
-    // bt.addEventListener("click", function(){
-    //     console.log(Array.isArray)  
-    //   var data = {
-    //     "Email_Id":email.value,
-    //     "Password":pwd.value
-    //   }
-    //   console.log(json.innerHTML=JSON.stringify(data))
-    // })
