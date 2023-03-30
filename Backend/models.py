@@ -36,7 +36,15 @@ class ship(BaseModel):
     NDC_Number : str
     Batch_ID :str
     Serial_Number_of_goods:str
-  
+
+# creating Device Data Basemodel class
+class devicedata(BaseModel):
+    Battery_Level: int
+    Device_ID: int
+    First_Sensor_Temperature: int
+    Route_From: str
+    Route_To: str
+
 # creating model dictionary
 def userEntity(user) -> dict:
     return{
@@ -61,6 +69,15 @@ def shipEntity(ship) -> dict:
         "Batch_ID" :str(ship["Batch_ID"]),
         "Serial_Number_of_goods" :str(ship["Serial_Number_of_goods"]),
           }
+
+def ddEntity(devicedata) -> dict:
+    return{
+        "Battery_Level":int(devicedata["Battery_Level"]),
+        "Device_ID": int(devicedata["Device_ID"]),
+        "First_Sensor_Temperature": int(devicedata["First_Sensor_Temperature"]),
+        "Route_From": str(devicedata["Route_From"]),
+        "Route_To": str(devicedata(["Route_To"]))
+    }
 
 # def serializeDict(a) -> dict:
 #     return {**{i:str(a[i]) for i in a if i=='_id'},**{i:a[i] for i in a if i!='_id'}}

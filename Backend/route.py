@@ -1,12 +1,13 @@
 # routes the fastapi with functionalitites
 from fastapi import APIRouter, HTTPException, Depends
-from models import user, ship, login
+from models import user, ship, login, devicedata
 from utils import Hash
 from validation import validation, shipvalidation
-
 # import function from other user defined python files
 from database import conn
+import json
 from jwt import create_access_token, get_current_user
+
 
 # routing variable
 add=APIRouter()
@@ -59,6 +60,17 @@ async def create_shipment(Shipment: ship, token:str=Depends(get_current_user)):
         return {"Uploaded Successfully"}
     else:
         raise HTTPException(
-            status_code=401, detail='Unauthorized entry'
+            status_code=401, detail='Unauthorized Entry'
             )
+    
+@add.get('/devicedata')
+async def get_devicedata(DD: devicedata, token:str=Depends(get_current_user)):
+    if token:
+        device_data=DD.objects().to_json()
+        devicedata_list=json.loads(device_data)
+        return(devicedata_list)
+    else:
+        raise HTTPException(
+            status_code=401, detail='Unauthorized Access'
+        )
         
