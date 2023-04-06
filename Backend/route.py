@@ -1,13 +1,14 @@
 # routes the fastapi with functionalitites
 from fastapi import APIRouter, HTTPException, Depends
-from models import user, ship, login, devicedata
+from models import user, ship, login, Device_Data, userEntity, ddEntity, dentity
 from utils import Hash
 from validation import validation, shipvalidation
-# import function from other user defined python files
-from database import conn
+from bson import json_util
 import json
+# import function from other user defined python files
+# from database import conn
 from jwt import create_access_token, get_current_user
-
+from config import col1, col2, col3
 
 # routing variable
 add=APIRouter()
@@ -15,7 +16,7 @@ add=APIRouter()
 # Register user via Sign-in Page
 @add.post('/signup')
 async def create_user(Signup: user):
-    email_check=conn.SCMXpert.Sign_up.find_one({"emailid":Signup.emailid})
+    email_check=col1.find_one({"emailid":Signup.emailid})
     validation(Signup)
     if email_check:
         raise HTTPException(
@@ -24,14 +25,14 @@ async def create_user(Signup: user):
     else:
         hashed_pass=Hash.hash_password(Signup.password)
         Signup.password=hashed_pass
-        conn.SCMXpert.Sign_up.insert_one(dict(Signup))
+        col1.insert_one(dict(Signup))
     # this returns the user created --return (create_user)
     return {"Registered Successfully"}
 
 # Login Page validation
 @add.post('/login')
 async def find_user(Login:login):
-    user_data=conn.SCMXpert.Sign_up.find_one({"emailid":Login.emailid})
+    user_data=col1.find_one({"emailid":Login.emailid})
     if not user_data:
         raise HTTPException(
             status_code=400,detail="Email not found."
@@ -56,21 +57,33 @@ async def redirect(token:str=Depends(get_current_user)):
 async def create_shipment(Shipment: ship, token:str=Depends(get_current_user)):
     if token:
         shipvalidation(Shipment)
-        conn.SCMXpert.Shipment.insert_one(dict(Shipment))
+        col2.insert_one(dict(Shipment))
         return {"Uploaded Successfully"}
     else:
         raise HTTPException(
             status_code=401, detail='Unauthorized Entry'
             )
-    
+
+@add.get('/getusers')
+def get_users():
+    users = []
+    docs = col1.find({})
+    for user in docs:
+        users.append(userEntity(user))
+    return users
+
 @add.get('/devicedata')
-async def get_devicedata(DD: devicedata, token:str=Depends(get_current_user)):
+def get_devicedata(token:str=Depends(get_current_user)):
+
     if token:
-        device_data=DD.objects().to_json()
-        devicedata_list=json.loads(device_data)
-        return(devicedata_list)
+        data = col3.find({},{"_id":0})
+        response = json.loads(json_util.dumps(data))
+        return response
     else:
         raise HTTPException(
             status_code=401, detail='Unauthorized Access'
         )
-        
+    
+
+
+    

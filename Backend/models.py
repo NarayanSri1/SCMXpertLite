@@ -38,10 +38,10 @@ class ship(BaseModel):
     Serial_Number_of_goods:str
 
 # creating Device Data Basemodel class
-class devicedata(BaseModel):
-    Battery_Level: int
-    Device_ID: int
-    First_Sensor_Temperature: int
+class Device_Data(BaseModel):
+    Battery_Level: str
+    Device_ID: str
+    First_Sensor_Temperature: str
     Route_From: str
     Route_To: str
 
@@ -70,14 +70,20 @@ def shipEntity(ship) -> dict:
         "Serial_Number_of_goods" :str(ship["Serial_Number_of_goods"]),
           }
 
-def ddEntity(devicedata) -> dict:
-    return{
-        "Battery_Level":int(devicedata["Battery_Level"]),
-        "Device_ID": int(devicedata["Device_ID"]),
-        "First_Sensor_Temperature": int(devicedata["First_Sensor_Temperature"]),
-        "Route_From": str(devicedata["Route_From"]),
-        "Route_To": str(devicedata(["Route_To"]))
+def ddEntity(Device_Data) -> dict:
+    return {
+        "Battery_Level":str(Device_Data["Battery_Level"]),
+        "Device_ID": str(Device_Data["Device_ID"]),
+        "First_Sensor_Temperature": str(Device_Data["First_Sensor_Temperature"]),
+        "Route_From": str(Device_Data["Route_From"]),
+        "Route_To": str(Device_Data(["Route_To"])),
     }
+
+def dentity(entity) -> list:
+    return [ddEntity(Device_Data) for Device_Data in entity]
+
+
+# to get dictionary to list - to show data to 
 
 # def serializeDict(a) -> dict:
 #     return {**{i:str(a[i]) for i in a if i=='_id'},**{i:a[i] for i in a if i!='_id'}}
