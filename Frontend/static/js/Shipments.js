@@ -63,14 +63,14 @@
               // when call is sucessfull
            },
            error: function e(xhr){
-            if(xhr.responseJSON.detail=="Please Fill All Details"){
+            if(xhr.responseJSON.detail=="Please enter the required fields!"){
               error.style.display="flex";
-              error.innerHTML="Please Fill All Details"
+              error.innerHTML="Please enter the required fields!"
             }
             else if (xhr.responseJSON.detail=="PO_Number should be a number of 6 digits"){
               error.style.display="flex";
               error.innerHTML="PO_Number should be a number of 6 digits"
-            }          
+            }         
           }
         }); // ajax call closing
         // console.log(json.innerHTML=JSON.stringify(data))

@@ -13,10 +13,12 @@ body{
     padding: 2.5%;
     padding-bottom: 1%;
     border-radius: 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .card .card-title{
     font-size:23px;
+    text-align: center;
 }
 
 .card .button{
@@ -90,11 +92,11 @@ body{
 }
 
 .incorrectCaptcha {
-    color: #FF0000;
+    color:#0c0c0c;
 }
 
 .correctCaptcha {
-    color: #14e0257c;
+    color: #0c0c0c;
 }
 
 @media only screen and (max-width: 500px) {

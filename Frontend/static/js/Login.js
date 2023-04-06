@@ -3,7 +3,7 @@
     let emailid =  document.getElementById("email")
     let password = document.getElementById("pwd")
     // var json = document.getElementById("json")
-
+    
     let captchaText = document.querySelector('#captcha');
     var ctx = captchaText.getContext("2d");
     ctx.font = "30px Roboto";
@@ -19,46 +19,62 @@
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     let emptyArr = [];
 
-    for (let i = 1; i <= 7; i++) {
-      emptyArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+    function captcha(){
+      userText.value = "";
+      let refreshArr = [];
+      for (let j = 1; j <= 7; j++) {
+        refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
       }
-      var c = emptyArr.join('');
-      ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
+      ctx.clearRect(0, 0, captchaText.width, captchaText.height);
+      c = refreshArr.join('');
+      ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
+      output.innerHTML = "";
+      loginButton.style.display="none";
+    }
 
-      userText.addEventListener('keyup', function(e) {
-        // Key Code Value of "Enter" Button is 13
-        if (e.keyCode === 13) {
-          if (userText.value === c) {
-            output.classList.add("correctCaptcha");
-            output.innerHTML = "Correct!";
-          } else {
-            output.classList.add("incorrectCaptcha");
-            output.innerHTML = "Incorrect, please try again";
-          }
+    for (let i = 1; i <= 7; i++) {
+        emptyArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
         }
-        });
-        submitButton.addEventListener('click', function() {
-          if (userText.value === c) {
-            output.classList.add("correctCaptcha");
-            output.innerHTML = "Correct!";
-            loginButton.style.display="initial";
-          } else {
-            output.classList.add("incorrectCaptcha");
-            output.innerHTML = "Incorrect, please try again.";
-            loginButton.style.display="none";
+        
+        var c = emptyArr.join('');
+        ctx.fillText(emptyArr.join(''),captchaText.width/4, captchaText.height/2);
+  
+        userText.addEventListener('keyup', function(e) {
+          // Key Code Value of "Enter" Button is 13
+          if (e.keyCode === 13) {
+            if (userText.value === c) {
+              output.classList.add("correctCaptcha");
+              output.innerHTML = "";
+            } else {
+              output.classList.add("incorrectCaptcha");
+              output.innerHTML = "Incorrect, please try again";
+            }
           }
           });
-        refreshButton.addEventListener('click', function() {
-            userText.value = "";
-            let refreshArr = [];
-            for (let j = 1; j <= 7; j++) {
-            refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+          submitButton.addEventListener('click', function() {
+            if (userText.value === c) {
+              output.classList.add("correctCaptcha");
+              output.innerHTML = "";
+              loginButton.style.display="initial";
+            } else {
+              output.classList.add("incorrectCaptcha");
+              output.innerHTML = "Incorrect, please try again.";
+              loginButton.style.display="none";
             }
-            ctx.clearRect(0, 0, captchaText.width, captchaText.height);
-            c = refreshArr.join('');
-            ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
-            output.innerHTML = "";
             });
+          refreshButton.addEventListener('click', function() {
+              userText.value = "";
+              let refreshArr = [];
+              for (let j = 1; j <= 7; j++) {
+              refreshArr.push(alphaNums[Math.floor(Math.random() * alphaNums.length)]);
+              }
+              ctx.clearRect(0, 0, captchaText.width, captchaText.height);
+              c = refreshArr.join('');
+              ctx.fillText(refreshArr.join(''),captchaText.width/4, captchaText.height/2);
+              output.innerHTML = "";
+              });
+    
+    
 
     function clearinput(){
       emailid.value=""
@@ -105,11 +121,13 @@
               if(xhr.responseJSON.detail=="Email not found."){
                 emailErrorMsg.style.display="flex";
                 emailErrorMsg.innerHTML="Email not found.";
+                captcha();
                 return false
               }
               else if(xhr.responseJSON.detail=="Incorrect Password."){
                 pwdErrorMsg.style.display="flex";
                 pwdErrorMsg.innerHTML="Incorrect Password.";
+                captcha();
                 return false
               }
              // check the err for error details

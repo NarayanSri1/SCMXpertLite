@@ -43,5 +43,5 @@ def shipvalidation(Ship:ship):
        s12 == ""):
         raise HTTPException(
             status_code=400,
-            detail= "Please enter the required field!"
+            detail= "Please enter the required fields!"
         )
