@@ -56,7 +56,7 @@
           data: JSON.stringify(data),
           success: function (result) {
             error.style.display="flex";
-            error.innerHTML="Data Loaded Successfully"
+            error.innerHTML="Shipment Created!"
             error.style.color="green"
             console.log(result)
             // console.log("Registered Successfully")
@@ -70,7 +70,11 @@
             else if (xhr.responseJSON.detail=="PO_Number should be a number of 6 digits"){
               error.style.display="flex";
               error.innerHTML="PO_Number should be a number of 6 digits"
-            }         
+            }
+            else if (xhr.responseJSON.detail=="Shipment/Invoice Number should consist only numbers."){
+              error.style.display="flex";
+              error.innerHTML="Shipment/Invoice Number should consist only numbers."
+            }
           }
         }); // ajax call closing
         // console.log(json.innerHTML=JSON.stringify(data))

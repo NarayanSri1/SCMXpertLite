@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body{
-    background-color: #2e7be0;
+    background-image: url('https://images.pexels.com/photos/398064/pexels-photo-398064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); 
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: auto;
 }
 
 .card {
     margin: auto;
-    margin-top: 5.5%;
+    margin-top: 8.5%;
+    margin-right: 10%;
     width: 30%;
-    background-color:#fff;
+    opacity: 90%;
+    background-color:#e9e9dd;
     box-shadow: rgb(0 0 0 / 46%) 0px 4px 12px;
     padding: 2.5%;
     padding-bottom: 1%;
@@ -19,6 +24,10 @@ body{
 .card .card-title{
     font-size:23px;
     text-align: center;
+}
+
+.image {
+    width:100%;
 }
 
 .card .button{
@@ -43,9 +52,9 @@ body{
     font-size: 12.5px;
 }
 
-.container{
-    text-align: center;
-}
+/* .container{
+    text-align: left;
+} */
 
 .error-message{
     color: #e24b37;
@@ -58,12 +67,19 @@ body{
 .center {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-content: center;
     margin-top: auto;
+    color: #fff;
 }
 
-#textBox {
-    height: 30px;
+.button {
+    align-items: center;
+}
+
+#textbox {
+    height: 20px;
+    align-items: center;
+    margin-left: auto;
 }
 
 #submitButton {
@@ -76,8 +92,7 @@ body{
 }
 
 #captcha {
-    height: 80%;
-    width: 80%;
+    width: 70%;
     font-size: 30px;
     letter-spacing: 3px;
     margin: auto;
@@ -99,7 +114,7 @@ body{
     color: #0c0c0c;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
     .card {
         width: 50%;
         margin-top: 30%;

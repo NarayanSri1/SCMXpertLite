@@ -47,7 +47,7 @@
             console.log(result)
             window.location.href = "../../Frontend/templates/Login.html"
            },
-           error: function (xhr) {
+           error: function(xhr) {
              console.log(xhr.responseJSON.detail)
            // check the err for error details
              let emailErrorMsg = document.getElementById("errorMessageEmail");

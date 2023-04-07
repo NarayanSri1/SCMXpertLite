@@ -58,7 +58,7 @@ async def create_shipment(Shipment: ship, token:str=Depends(get_current_user)):
     if token:
         shipvalidation(Shipment)
         col2.insert_one(dict(Shipment))
-        return {"Uploaded Successfully"}
+        return {"Shipment Created!"}
     else:
         raise HTTPException(
             status_code=401, detail='Unauthorized Entry'

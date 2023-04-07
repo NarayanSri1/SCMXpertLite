@@ -29,6 +29,7 @@ def shipvalidation(Ship:ship):
     s10 = Ship.NDC_Number
     s11 = Ship.Batch_ID
     s12= Ship.Serial_Number_of_goods
+
     if(s1 == "" or
        s2 == "" or
        s3 == "" or
@@ -44,4 +45,10 @@ def shipvalidation(Ship:ship):
         raise HTTPException(
             status_code=400,
             detail= "Please enter the required fields!"
+        )
+    
+    if not (s1.isalnum):
+        raise HTTPException(
+            status_code=400,
+            detail="Shipment/Invoice Number should consist only numbers."
         )

@@ -11,3 +11,11 @@ async function checkValidity(){
             // }
     })
 }
+
+function shipdirect(){
+    location.href="../templates/Shipments.html"
+}
+
+function ddsdirect(){
+    location.href="../templates/DeviceDataStream.html"
+}

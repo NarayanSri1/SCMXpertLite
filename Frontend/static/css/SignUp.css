@@ -1,12 +1,18 @@
 body{
-    background-color: #2e7be0;
+    /* background-image: url(https://images.pexels.com/photos/1095814/pexels-photo-1095814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
+    background-image: url('https://images.pexels.com/photos/167676/pexels-photo-167676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: auto;
 }
 
 .card {
     margin: auto;
     margin-top: 8.5%;
+    margin-right: 10%;
     width: 30%;
-    background-color:#fff;
+    opacity: 90%;
+    background-color:#dde4e9;
     box-shadow: rgb(0 0 0 / 46%) 0px 4px 12px;
     padding: 2.5%;
     padding-bottom: 1%;
@@ -18,6 +24,7 @@ body{
     font-size:23px;
     text-align: center;
 }
+
 
 .card .button{
     height: 38px;
@@ -51,7 +58,7 @@ body{
     display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 750px) {
     .card {
         width: 50%;
         margin-top: 30%;

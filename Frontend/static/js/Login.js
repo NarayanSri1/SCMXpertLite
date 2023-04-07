@@ -130,6 +130,11 @@
                 captcha();
                 return false
               }
+              else{
+                emailErrorMsg.innerHTML ="";
+                pwdErrorMsg.innerHTML="";
+                return true;
+              }
              // check the err for error details
              }
           }); // ajax call closing

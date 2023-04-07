@@ -1,15 +1,19 @@
 body{
-    background-color: #2e7be0;
+    background-image: url('https://images.pexels.com/photos/3856433/pexels-photo-3856433.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:initial;
 }
 
 .card {
     margin: auto;
     margin-top: 5%;
     width: 50%;
+    opacity: 90%;
     background-color:#fff;
     box-shadow: rgb(0 0 0 / 46%) 0px 4px 12px;
     padding: 2.5%;
-    padding-bottom: 2.5%;
+    padding-bottom: 1%;
     border-radius: 10px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -29,7 +33,7 @@ body{
     color: #fff;
 }
 
-.card .button:hover{
+.card .button:hover {
     background-color:rgba(231, 206, 233, 0.774);
     color: #2e2323de;
 }

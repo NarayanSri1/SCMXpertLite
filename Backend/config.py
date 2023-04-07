@@ -8,7 +8,7 @@ client=MongoClient(connection_string)
 db=client["SCMXpert"]
 
 #Creating collections
-col1=db["Sign_up"]
+col1=db["Users"]
 col2=db["Shipment"]
 col3=db["Device_Data_Stream"]
 
