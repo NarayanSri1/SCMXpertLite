@@ -11,4 +11,5 @@ db=client["SCMXpert"]
 col1=db["Users"]
 col2=db["Shipment"]
 col3=db["Device_Data_Stream"]
+col4=db["Roles"]
 

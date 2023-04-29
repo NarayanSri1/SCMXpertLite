@@ -46,9 +46,3 @@ def shipvalidation(Ship:ship):
             status_code=400,
             detail= "Please enter the required fields!"
         )
-    
-    if not (s1.isalnum):
-        raise HTTPException(
-            status_code=400,
-            detail="Shipment/Invoice Number should consist only numbers."
-        )

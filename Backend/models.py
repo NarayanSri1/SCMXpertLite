@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import Optional
 # include Basemodel classes
 from pydantic import BaseModel
@@ -7,11 +8,20 @@ class user(BaseModel):
     username: str
     emailid: str
     password: str
+
+    class Roles(str, Enum):
+        ADMIN = "ADMIN"
+        USER = "USER"
+
     # confirmpassword: str
 
 class login(BaseModel):
     emailid: str
     password: str
+
+class forgotpwd(BaseModel):
+    emailid: str
+  
 
 # creating Token Basemodel class
 class Token(BaseModel):
@@ -79,8 +89,7 @@ def ddEntity(Device_Data) -> dict:
         "Route_To": str(Device_Data(["Route_To"])),
     }
 
-def dentity(entity) -> list:
-    return [ddEntity(Device_Data) for Device_Data in entity]
+
 
 
 # to get dictionary to list - to show data to 
