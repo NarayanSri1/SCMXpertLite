@@ -1,26 +1,15 @@
 body{
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position:initial;
-}
-
-.header {
-    background-color: rgb(196, 180, 180);
-    font-stretch: wider;
-    color: #3b3737;
-    margin-left: 5%;
-    opacity: 90%;
+    background-color: #2e7be0;
 }
 
 .card {
     margin: auto;
     margin-top: 5%;
     width: 50%;
-    opacity: 90%;
-    background-color: rgb(196, 180, 180);
+    background-color:#fff;
     box-shadow: rgb(0 0 0 / 46%) 0px 4px 12px;
     padding: 2.5%;
-    padding-bottom: 1%;
+    padding-bottom: 2.5%;
     border-radius: 10px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -40,7 +29,19 @@ body{
     color: #fff;
 }
 
-.card .button:hover {
+.card .button:hover{
     background-color:rgba(231, 206, 233, 0.774);
     color: #2e2323de;
 }
+
+.styled-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    content: center;
+  }
+  
+  .styled-table tr, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }

@@ -36,6 +36,15 @@
             required>
             <span class="error-message" id="errorMessageCpwd">Error</span>
         </div>
+        <div class="mb-3">
+          <label for="role">Role</label>
+          <select class="dropdown" id="urole">
+            <option value="" disabled select hidden>Select Role</option>
+            <option><a href="Admin">Admin</a></option>
+            <option><a href="User">User</a></option>
+          </select>
+          <span class="error-message" id="errorMessagePwd">Error</span>
+        </div>
         <div class="col-auto">
             <button type="submit" class="button" id="btn" onclick="getinput()">SIGN UP</button>
         </div>

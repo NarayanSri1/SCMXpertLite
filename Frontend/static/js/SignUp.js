@@ -3,6 +3,7 @@
     var email =  document.getElementById("semail")
     var password = document.getElementById("spwd")
     var cpassword = document.getElementById("scpwd") 
+    var urole = document.getElementById("urole") 
     var json = document.getElementById("jsons")
     
     function getinput(){
@@ -35,6 +36,7 @@
           "username":username.value,
           "emailid":email.value,
           "password":password.value,
+          "role":urole.value
         }
         $.ajax({
           url: "http://127.0.0.1:8000/signup", 

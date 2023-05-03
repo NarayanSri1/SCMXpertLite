@@ -8,11 +8,7 @@ class user(BaseModel):
     username: str
     emailid: str
     password: str
-
-    class Roles(str, Enum):
-        ADMIN = "ADMIN"
-        USER = "USER"
-
+    role: str
     # confirmpassword: str
 
 class login(BaseModel):
@@ -52,8 +48,15 @@ class Device_Data(BaseModel):
     Battery_Level: str
     Device_ID: str
     First_Sensor_Temperature: str
-    Route_From: str
+    Route_Details: str
     Route_To: str
+
+class Shipment_Data(BaseModel):
+    Shipment_Invoice_Number: str
+    Device: str
+    Goods_Type: str
+    Route_Details: str
+    Expected_Delivery_Date: str
 
 # creating model dictionary
 def userEntity(user) -> dict:
@@ -61,6 +64,7 @@ def userEntity(user) -> dict:
         "username": str(user["username"]),
         "emailid": str(user["emailid"]),
         "password": str(user["password"]),
+        "role":str(user["role"])
         # "cpassword":str(item["cpassword"])
     }
 
