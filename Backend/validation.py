@@ -1,6 +1,7 @@
 # importing HTTPexception
 from fastapi import HTTPException
 from models import user, ship
+from config import col2
 import re
 
 def validation(User:user):
@@ -29,6 +30,12 @@ def shipvalidation(Ship:ship):
     s10 = Ship.NDC_Number
     s11 = Ship.Batch_ID
     s12= Ship.Serial_Number_of_goods
+    shipment_check=col2.find_one({"Shipment_Invoice_Number":s1})
+
+    if shipment_check:
+        raise HTTPException(
+            status_code=400,detail="Shipment already exists."
+        )
 
     if(s1 == "" or
        s2 == "" or
@@ -46,3 +53,23 @@ def shipvalidation(Ship:ship):
             status_code=400,
             detail= "Please enter the required fields!"
         )
+    
+    if not (s1.isnumeric()):
+        raise HTTPException(
+            status_code=400,
+            detail= "Shipment number should only be alphanumeric."
+        )
+    
+    if (len(s3)>120):
+        raise HTTPException(
+            status_code=400,
+            detail= "Please enter the description within 120 characters."
+        )
+    
+    if (len(s8)>6):
+        raise HTTPException(
+            status_code=400,
+            detail= "PO Number should be a number of six digits."
+        )
+    
+    
