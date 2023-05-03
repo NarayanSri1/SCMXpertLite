@@ -22,8 +22,6 @@ topic_name = 'device_data'
 #         "Route_To": str(Device_Data(["Route_To"]))
 #     }
 
-
-
 try:
     consumer = KafkaConsumer(topic_name, 
                              bootstrap_servers = bootstrap_servers,
