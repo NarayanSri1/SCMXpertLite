@@ -1,6 +1,6 @@
 # routes the fastapi with functionalitites
 from fastapi import APIRouter, HTTPException, Depends
-from models import user, ship, login, Device_Data, userEntity, ddEntity, forgotpwd
+from models import user, ship, login, userEntity, forgotpwd
 from utils import Hash
 from validation import validation, shipvalidation
 from bson import json_util
@@ -125,7 +125,3 @@ def get_shipmentdata(token:str=Depends(get_current_user)):
         raise HTTPException(
             status_code=401, detail='Unauthorized Access'
         )
-    
-
-
-    
