@@ -10,9 +10,7 @@
     </head>
     <!-- checks if the token is valid -->
     <body onload ="checkValidity()">
-        <video>
-            <source src="../asserts/stock-footage-container-ship-loading-and-unloading-in-deep-sea-port-low-angle-view-of-business-logistic-import.webm">
-        </video>
+
         <div id="sidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
             <a href="../templates/Dashboard.html">Home</a>
@@ -31,8 +29,15 @@
             <img src="https://marvel-b1-cdn.bc0a.com/f00000000100045/www.elmhurst.edu/wp-content/uploads/2023/01/global-supply-chain-management-illustration.jpg">
             <br>
             <div class="d-flex justify-content-around">
-                <span>To create a new Shipment</span><button id="shipbutton" onclick="shipdirect()">Shipments</button><br>
-                <span>To view Device Data Stream</span><button id="ddsbutton" onclick="ddsdirect()">Device Data Stream</button>
+                <div class="shipment">
+                    <span>To create a new Shipment</span><button id="shipbutton" onclick="shipdirect()">Shipments</button><br>
+                </div>
+                <div class="vshipment">
+                    <span>To view Shipments</span><button id="vshipbutton" onclick="vshipdirect()">View Shipments</button><br>
+                </div>
+                <div class="dds">
+                    <span>To view Device Data Stream</span><button id="ddsbutton" onclick="ddsdirect()">Device Data Stream</button>
+                </div>
             </div>
             <script src="../static/js/Dashboard.js"></script>
             <script type="text/javascript" src="../static/js/Home.js"></script>

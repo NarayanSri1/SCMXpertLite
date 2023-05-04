@@ -4,6 +4,10 @@ body{
     background-position:initial;
 }
 
+div.shipment, div.vshipment, div.dds {
+    display:none
+}
+
 .header {
     background-color: rgb(196, 180, 180);
     font-stretch: wider;

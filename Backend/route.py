@@ -41,7 +41,7 @@ async def find_user(Login:login):
         raise HTTPException(
             status_code=400, detail="Incorrect Password."
         )    
-    access_token = create_access_token(data={"token":user_data["username"]})
+    access_token = create_access_token(data={"token":user_data["username"],"role":user_data["role"]})
     return{"access_token":access_token,"token_type":"bearer"}
 
 # The self parameter is a reference to the current instance of the class, 
