@@ -41,3 +41,7 @@ function shipdirect(){
 function ddsdirect(){
     location.href="../templates/DeviceDataStream.html"
 }
+
+function vshipdirect(){
+    location.href="../templates/UserCollection.html"
+}

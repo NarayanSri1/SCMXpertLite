@@ -12,12 +12,12 @@ async function checkValidity(){
     })
 }
 
-function getDeviceData() {
+function getShipData() {
     var token = localStorage.getItem("access_token");
                 if(token == undefined){                  
                     window.location.href = "../../Frontend/templates/Login.html"
                 }else{   
-  fetch("http://127.0.0.1:8000/devicedata", {
+  fetch("http://127.0.0.1:8000/getShipData", {
     method:'GET',
     headers: {
     Accept: 'application/json',

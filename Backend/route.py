@@ -115,7 +115,7 @@ def get_devicedata(token:str=Depends(get_current_user)):
             status_code=401, detail='Unauthorized Access'
         )
     
-@add.get('/shipmentdata')
+@add.get('/getShipData')
 def get_shipmentdata(token:str=Depends(get_current_user)):
     if token:
         data = col2.find({},{"_id":0})
