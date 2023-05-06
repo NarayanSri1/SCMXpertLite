@@ -1,12 +1,14 @@
 body{
-    background-color: #2e7be0;
+    background-image: url(../../asserts/DDS.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
 }
 
 .card {
     margin: auto;
     margin-top: 5%;
     width: 50%;
-    background-color:#fff;
+    background-color:#58491dec;
     box-shadow: rgb(0 0 0 / 46%) 0px 4px 12px;
     padding: 2.5%;
     padding-bottom: 2.5%;
@@ -39,9 +41,10 @@ body{
     border-collapse: collapse;
     width: 100%;
     content: center;
+    color: bisque;
   }
   
   .styled-table tr, .styled-table td {
-    border: 1px solid #ddd;
+    border: 1px solid #1a140b;
     padding: 8px;
   }
