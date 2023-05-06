@@ -1,5 +1,7 @@
 body{
-    background-color: #2e7be0;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-image: url(../../asserts/Shipment_picture.jpg)
 }
 
 label {
@@ -9,25 +11,16 @@ label {
 
 }
 
-.info{
-    display: inline-block;
-    border-radius: 6px;
-    text-align: left;
-    width: 200px;
-    height: 35px; 
-    margin:5px;
-}
-
-.card {
-    margin: auto;
-    margin-top: 5%;
-    width: 30%;
-    background-color:#fff;
-    box-shadow: rgb(0 0 0 / 46%) 0px 4px 12px;
-    padding: 2.5%;
-    padding-bottom: 1%;
-    border-radius: 10px;
-}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    margin-left: 5%;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
 
 .card .btn-group{
     display: inline-block;

@@ -33,6 +33,7 @@ div.shipment, div.vshipment, div.dds {
     border-radius: 10px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: larger;
+    text-align: center;
 }
 
 #shipbutton, #vshipbutton, #ddsbutton {
@@ -43,16 +44,16 @@ div.shipment, div.vshipment, div.dds {
     font-size:x-large;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
     border-radius: 10px;
-    color: #F1FAFC;
+    color: #171b1b;
 }
 
 #shipbutton:hover, #vshipbutton:hover, #ddsbutton:hover {
     margin: auto;
     height: 40px;
-    background-color: #75E6DA;
+    background-color: #A4E8E0;
     border-width: 0px;
     font-size:x-large;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
     border-radius: 10px;
-    color: #F1FAFC;
+    color: #4C5270;
 }

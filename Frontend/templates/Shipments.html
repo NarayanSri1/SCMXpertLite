@@ -19,77 +19,148 @@
         <div id="main">
             <button class="openbtn" onclick="openNav()">☰</button>
         </div>
-        <div class="card">
-            <div class="container" id="form">
-                <span class="error-message" id="errorm">Error</span>
-                <label for="siname">Shipment/Invoice Number</label>
-                <input type ="id" id="sinum" class="info" placeholder="Shipment/Invoice Number">
-
-                <br>
-                <label for="cnname">Container Number</label>
-                <input type="id" class="info" id="cnum" placeholder="Container Number">
-
-                <br>
-                <label for="sdesc">Shipment Description</label>
-                <input type="text" class="info" id="sdesc" placeholder="Enter Your Description">
-               
-                <br>
-                <label for="rdetails">Route Details</label>
-                <select class="dropdown" id="rdetails">
-                    <option value="" disabled selected hidden>Select Route</option><option>
-                        <a href="The English Channel">The English Channel</a></option>
-                        <option><a href="Panama Canal">Panama Canal</a></option>
-                        <option><a href="Suez Canal">Suez Canal</a></option></select>
-                        
-                <br>
-                <label for="gdtypes">Goods Type</label>
-                <select class="dropdown" id="gdtypes">
-                    <option value="" disabled selected hidden>Select Good Type</option><option>
-                        <a href="Machinery">Machinery</a></option>
-                        <option><a href="Livestock">Livestock</a></option>
-                        <option><a href="Fuel">Fuel</a></option></select>
-                        
-                <br>
-                <label for="device">Device ID</label>
-                <select class="dropdown" id="device">
-                    <option value="" disabled selected hidden>Select Device ID</option>
-                    <option><a href="1151">1151</a></option>
-                    <option><a href="1152">1152</a></option>
-                    <option><a href="1153">1153</a></option>
-                    <option><a href="1154">1154</a></option>
-                    <option><a href="1155">1155</a></option>
-                    <option><a href="1156">1156</a></option>
-                    <option><a href="1157">1157</a></option>
-                </select>
+        <section class="h-80">
+            <div class="container">
+              <div class="row d-flex justify-content-center align-items-center">
+                <div class="col">
+                  <div class="card">
                     
-                <br>
-                <label for="exdate">Expected Delivery Date</label>
-                <input type="date" class="info" id="exdate"  placeholder="Expected Delivery Date">
-                
-                <br>
-                <label for="ponum">PO Number</label><input type="id" class="info" id="ponum" placeholder="PO Number">
-                
-                <br>
-                <label for="delnum">Delivery Number</label>
-                <input type="id" class="info" id="delnum" placeholder="Delivery Number">
-                
-                <br>
-                <label for="ndcnum">NDC Number</label>
-                <input type="id" class="info" id="ndcnum" placeholder="NDC Number">
-                
-                <br>
-                <label for="bid">Batch ID</label>
-                <input type="id" class="info" id="bid"  placeholder="Batch Id">
-                
-                <br>
-                <label for="goodsno">Serial Number of Goods</label>
-                <input type="id" class="info" id="goodsno" placeholder="Serial Number of goods">
-            </div>
-            <br>
-                <div class="d-flex justify-content-around">
-                    <button type="submit" class="button" id="subbtn" onclick="getbulkinput()">Submit Shipment</button>
-                    <button type="reset" class="button" id="canbtn" onclick="clearinput()">Cancel Shipment</button>
+                      <div class="col-xl-12">
+                        <div class="card-body p-md-4 text-black">
+                          
+                          <div class="row">
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1m">Shipment/Invoice Number</label>
+                                <input type="text" id="sinum" class="form-control form-control-lg" />
+                                
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Container Number</label>
+                                <input type="text" id="cnum" class="form-control form-control-lg" />
+                                
+                              </div>
+                            </div>
+                            
+                              <div class="col-md-4 mb-4">
+                                <div class="form-outline">
+                                    <label class="form-label" for="form3Example1n">Serial Number of Goods</label>
+                                  <input type="text" id="form3Example1n" class="form-control form-control-lg" />
+                                  
+                                </div>
+                              </div>
+                          </div>
+          
+                         
+                          <div class="row">
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Route Details</label>
+                                <select class="selectpicker form-control" id="rdetails">
+                                    <option value="" disabled selected hidden>Select Route</option>
+                                    <option><a href="The English Channel">The English Channel</a></option>
+                                    <option><a href="Panama Canal">Panama Canal</a></option>
+                                        <option><a href="Suez Canal">Suez Canal</a></option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Goods Type</label>
+                                <select class="selectpicker form-control" id="gdtypes">
+                                    <option value="" disabled selected hidden>Select Good Type</option><option>
+                                        <a href="Machinery">Machinery</a></option>
+                                        <option><a href="Livestock">Livestock</a></option>
+                                        <option><a href="Fuel">Fuel</a></option>
+                                </select>
+                           
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="form-outline">
+                                    <label class="form-label" for="form3Example1n">Device ID</label>
+                                    <select class="selectpicker form-control" id="device">
+                                        <option value="" disabled selected hidden>Select Device ID</option>
+                                        <option><a href="1151">1151</a></option>
+                                        <option><a href="1152">1152</a></option>
+                                        <option><a href="1153">1153</a></option>
+                                        <option><a href="1154">1154</a></option>
+                                        <option><a href="1155">1155</a></option>
+                                        <option><a href="1156">1156</a></option>
+                                        <option><a href="1157">1157</a></option>
+                                    </select>
+                                  
+                                </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Expected Delivery Date</label>
+                                <input type="text" id="exdate" class="form-control form-control-lg" />
+                            
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">PO Number</label>
+                                <input type="text" id="ponum" class="form-control form-control-lg" />
+                               
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="form-outline">
+                                    <label class="form-label" for="form3Example1n">Delivery Number</label>
+                                  <input type="text" id="delnum" class="form-control form-control-lg" />
+                                  
+                                </div>
+                              </div>
+                          </div>
+                        
+                          <div class="row">
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">NDC Number</label>
+                                <input type="text" id="ndcnum" class="form-control form-control-lg" />
+                            
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                              <div class="form-outline">
+                                <label class="form-label" for="form3Example1n">Batch ID</label>
+                                <input type="text" id="bid" class="form-control form-control-lg" />
+                               
+                              </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="form-outline">
+                                  <label class="form-label" for="form3Example1n">Serial Number of Goods</label>
+                                  <input type="text" id="goodsno" class="form-control form-control-lg" />
+                                 
+                                </div>
+                              </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="form-outline">
+                                    <label class="form-label" for="form3Example1n">Shipment Description</label>
+                                  <textarea  rows="3"  type="text" id="sdesc" class="form-control form-control-lg" ></textarea>
+                                
+                                </div>
+                              </div>
+                          </div>
+                          <div class="d-flex justify-content-around" id="classbutton">
+                            <button type="submit" class="button" id="subbtn" onclick="getbulkinput()">Submit Shipment</button>
+                            <button type="reset" class="button" id="canbtn" onclick="clearinput()">Cancel Shipment</button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </section>
         </div>
         <script type="text/javascript" src="../static/js/Shipments.js"></script>
         <script type="text/javascript" src="../static/js/Home.js"></script>
