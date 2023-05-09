@@ -47,7 +47,7 @@ async def find_user(Login:login):
 # The self parameter is a reference to the current instance of the class, 
 # and is used to access variables that belongs to the class.
 
-@add.get('/forgotpwd')
+@add.post('/forgotpwd')
 async def find_user(Fwt:forgotpwd):
     user_data=col1.find_one({"emailid":Fwt.emailid})
     if not user_data:
@@ -55,9 +55,9 @@ async def find_user(Fwt:forgotpwd):
             status_code=400,detail="Email not found."
         )
     else:
-        return {'message': 'Redirect to Reset Password'}
+        return {'emailid':user_data["emailid"],'message': 'Redirect to Reset Password'}
 
-@add.put('/resetpwd')
+@add.put('/resetpassword')
 async def find_user(Fwt:login):
           hashed_pass=Hash.hash_password(Fwt.password)
           Fwt.password=hashed_pass
