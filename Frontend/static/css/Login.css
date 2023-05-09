@@ -10,10 +10,10 @@ body{
 .card {
     margin: auto;
     margin-top: 8.5%;
-    margin-right: 10%;
+    margin-right: 5%;
     width: 30%;
     opacity: 90%;
-    background-color:#e9e9dd;
+    background-color:#ebe4d0;
     box-shadow: rgb(0 0 0 / 46%) 0px 4px 12px;
     padding: 2.5%;
     padding-bottom: 1%;
@@ -93,8 +93,8 @@ body{
 
 #captcha {
     width: 70%;
-    font-size: 30px;
-    letter-spacing: 3px;
+    font-size: 60px;
+    letter-spacing: 6px;
     margin: auto;
     display: block;
 }
@@ -107,7 +107,7 @@ body{
 }
 
 .incorrectCaptcha {
-    color:#0c0c0c;
+    color:#740808;
 }
 
 .correctCaptcha {

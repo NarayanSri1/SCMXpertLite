@@ -15,6 +15,7 @@ function checkValidity(){
                     $("div.shipment").show();
                     $("div.vshipment").show();
                     $("div.dds").show();
+                    $("div.ddsadmin").show();
                 }
             }
             // error: function(xhr, ajaxOptions, thrownError){                    

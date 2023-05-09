@@ -4,6 +4,7 @@ from models import user, ship, login, userEntity, forgotpwd
 from utils import Hash
 from validation import validation, shipvalidation
 from bson import json_util
+from bson.objectid import ObjectId
 import json
 # import function from other user defined python files
 # from database import conn
@@ -47,6 +48,7 @@ async def find_user(Login:login):
 # The self parameter is a reference to the current instance of the class, 
 # and is used to access variables that belongs to the class.
 
+# Api for forgot password flow
 @add.post('/forgotpwd')
 async def find_user(Fwt:forgotpwd):
     user_data=col1.find_one({"emailid":Fwt.emailid})
@@ -66,25 +68,13 @@ async def find_user(Fwt:login):
           print(Fwt.password)
           return {'message': 'Password Updated'}
 
-    # Return a success message
-    # return {'message': 'Todo updated successfully'}
-
-    #     Fwt.emailid = Signup.emailid
-    #     hashed_pass=Hash.hash_password(Signup.password)
-    #     Signup.password=hashed_pass
-    #     data = Signup.password
-    #     updated_password =  col1.update_one(
-    #     {"emailid":Signup.emailid}, {"$set": data}
-    # )
-    # return {"Password Reset":updated_password} 
-  
-
+# Dashboard API containing the token as local storage
 @add.get('/dashboard')
 async def redirect(token:str=Depends(get_current_user)):
     if token:
         return {"response":token}
 
-# Import data from shipments page
+# Post Data to shipment db in Mongo
 @add.post('/shipment')
 async def create_shipment(Shipment: ship, token:str=Depends(get_current_user)):
     if token:
@@ -95,6 +85,28 @@ async def create_shipment(Shipment: ship, token:str=Depends(get_current_user)):
         raise HTTPException(
             status_code=401, detail='Unauthorized Entry'
             )
+# --get all shipment collection
+@add.get('/getShipData')
+def get_shipmentdata(token:str=Depends(get_current_user)):
+    if token:
+        data = col2.find({},{"_id":0})
+        response = json.loads(json_util.dumps(data))
+        return response
+    else:
+        raise HTTPException(
+            status_code=401, detail='Unauthorized Access'
+        )
+# -- get user based shipment collection
+# @add.get('/usergetShipdata/id')
+# def get_usershipmentdata(Shipment: ship, user:login, token:str=Depends(get_current_user)):
+#     if token:
+
+#     else:
+#         raise HTTPException(
+#             status_code=401, detail='Unauthorized Access'
+#         )
+
+
 
 @add.get('/getusers')
 def get_users():
@@ -104,21 +116,11 @@ def get_users():
         users.append(userEntity(user))
     return users
 
+# Get Kafka dds from Mongo 
 @add.get('/devicedata')
 def get_devicedata(token:str=Depends(get_current_user)):
     if token:
         data = col3.find({},{"_id":0})
-        response = json.loads(json_util.dumps(data))
-        return response
-    else:
-        raise HTTPException(
-            status_code=401, detail='Unauthorized Access'
-        )
-    
-@add.get('/getShipData')
-def get_shipmentdata(token:str=Depends(get_current_user)):
-    if token:
-        data = col2.find({},{"_id":0})
         response = json.loads(json_util.dumps(data))
         return response
     else:

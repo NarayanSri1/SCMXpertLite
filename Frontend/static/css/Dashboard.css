@@ -4,12 +4,16 @@ body{
     background-image: url(../../asserts/World_shipment.jpg);
 }
 
-div.shipment, div.vshipment, div.dds {
+div.shipment, div.vshipment, div.dds, div.ddsadmin {
     background-color:#F1FAFC;
     padding: 2.5%;
     padding-bottom: 1%;
     border-radius: 10px;
     display:none;
+}
+
+div.ddsadmin{
+    background-color:#000000;
 }
 
 .header {

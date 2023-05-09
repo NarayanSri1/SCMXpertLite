@@ -96,6 +96,7 @@ def ddEntity(Device_Data) -> dict:
 
 
 
+
 # to get dictionary to list - to show data to 
 
 # def serializeDict(a) -> dict:
