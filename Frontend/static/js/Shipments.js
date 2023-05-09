@@ -1,4 +1,21 @@
-  // --onclick() function
+async function checkValidity(){
+  await $.ajax({
+          url:"http://"+"127.0.0.1"+":8000/dashboard",
+          type:"GET",
+          headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
+          success:function(result) {
+            console.log(result)
+                document.getElementById("username").innerHTML = result.response.token;
+                if(result.response.role == "Admin"){
+                  $("div.ddsadmin").show();
+                }
+          }
+          // error: function(xhr, ajaxOptions, thrownError){                    
+            
+          // }
+  })
+}
+// --onclick() function
   var sinum =  document.getElementById("sinum")
   var cnum = document.getElementById("cnum")
   var sdesc= document.getElementById("sdesc")

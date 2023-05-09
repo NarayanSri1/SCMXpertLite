@@ -2,6 +2,18 @@ body{
     background-color: #2e7be0;
 }
 
+div.shipment, div.vshipment, div.dds, div.ddsadmin {
+    background-color:#F1FAFC;
+    padding: 2.5%;
+    padding-bottom: 1%;
+    border-radius: 10px;
+    display:none;
+}
+
+div.ddsadmin{
+    background-color:#000000;
+}
+
 .card {
     margin: auto;
     margin-top: 5%;

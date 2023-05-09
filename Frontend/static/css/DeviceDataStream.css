@@ -4,6 +4,10 @@ body{
     background-repeat: no-repeat;
 }
 
+div.ddsadmin{
+    background-color:#000000;
+}
+
 .card {
     margin: auto;
     margin-top: 5%;

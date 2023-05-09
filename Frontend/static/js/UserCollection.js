@@ -4,7 +4,18 @@ async function checkValidity(){
             type:"GET",
             headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
             success:function(result) {
-                return {result}
+              console.log(result)
+              document.getElementById("username").innerHTML = result.response.token;
+              if(result.response.role == "User"){
+                    $("div.shipment").show();
+                    $("div.vshipment").show();
+              }
+              else if(result.response.role == "Admin"){
+                    $("div.shipment").show();
+                    $("div.vshipment").show();
+                    $("div.dds").show();
+                    $("div.ddsadmin").show();
+              }
             }
             // error: function(xhr, ajaxOptions, thrownError){                    
               

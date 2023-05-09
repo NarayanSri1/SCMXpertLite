@@ -4,7 +4,7 @@ body{
     background-image: url(../../asserts/World_shipment.jpg);
 }
 
-div.shipment, div.vshipment, div.dds, div.ddsadmin {
+div.shipment, div.vshipment, div.dds {
     background-color:#F1FAFC;
     padding: 2.5%;
     padding-bottom: 1%;

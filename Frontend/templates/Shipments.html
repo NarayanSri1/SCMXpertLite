@@ -9,13 +9,16 @@
         <link rel="stylesheet" href="../static/css/Home.css">
     </head>
     <body>
-        <div id="sidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-            <a href="../templates/Dashboard.html">Home</a>
-            <a href="../templates/Shipments.html">Shipment Page</a>
-            <a href="../templates/DeviceDataStream.html">Device Data Stream</a>
-            <a href="../templates/Login.html" button type="button" onclick="logout()">Logout</a>
+      <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="../templates/Dashboard.html">Home</a>
+        <a href="../templates/Shipments.html">Shipment Page</a>
+        <a href="../templates/UserCollection.html">View Shipments</a>
+        <div class="ddsadmin">
+          <a href="../templates/DeviceDataStream.html">Device Data Stream</a>
         </div>
+        <a href="#" button type="button" onclick="logout()">Logout</a>
+      </div>
         <div id="main">
             <button class="openbtn" onclick="openNav()">☰</button>
         </div>
