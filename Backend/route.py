@@ -4,7 +4,6 @@ from models import user, ship, login, userEntity, forgotpwd
 from utils import Hash
 from validation import validation, shipvalidation
 from bson import json_util
-from bson.objectid import ObjectId
 import json
 # import function from other user defined python files
 # from database import conn
@@ -42,7 +41,7 @@ async def find_user(Login:login):
         raise HTTPException(
             status_code=400, detail="Incorrect Password."
         )    
-    access_token = create_access_token(data={"token":user_data["username"],"role":user_data["role"]})
+    access_token = create_access_token(data={"token":user_data["username"], "role":user_data["role"]})
     return{"access_token":access_token,"token_type":"bearer"}
 
 # The self parameter is a reference to the current instance of the class, 
@@ -97,17 +96,20 @@ def get_shipmentdata(token:str=Depends(get_current_user)):
             status_code=401, detail='Unauthorized Access'
         )
 # -- get user based shipment collection
-# @add.get('/usergetShipdata/id')
-# def get_usershipmentdata(Shipment: ship, user:login, token:str=Depends(get_current_user)):
-#     if token:
+@add.get('/usergetShipdata')
+def get_usershipmentdata(token:str=Depends(get_current_user)):
+    if token:
+        data = col2.find({"user_name":token["token"]})
+        response = json.loads(json_util.dumps(data))
+        return response
+    
+    else:
+        raise HTTPException(
+            status_code=401, detail='Unauthorized Access'
+        )
 
-#     else:
-#         raise HTTPException(
-#             status_code=401, detail='Unauthorized Access'
-#         )
 
-
-
+# get users from db
 @add.get('/getusers')
 def get_users():
     users = []

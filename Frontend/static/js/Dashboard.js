@@ -5,6 +5,7 @@ function checkValidity(){
             headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
             success:function(result) {
                 console.log(result)
+                localStorage.setItem("user_name", result.response.token)
                 document.getElementById("username").innerHTML = result.response.token;
                 if(result.response.role == "User"){
                     $("div.shipment").show();

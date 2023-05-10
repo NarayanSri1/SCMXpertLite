@@ -1,7 +1,8 @@
 from enum import Enum
 from typing import Optional
 # include Basemodel classes
-from pydantic import BaseModel
+from pydantic import BaseModel, Field as PydanticField
+from bson.objectid import ObjectId as BsonObjectId
 
 # creating a basemodel class
 class user(BaseModel):
@@ -30,6 +31,7 @@ class TokenData(BaseModel):
 
 # creating Shipment class
 class ship(BaseModel):
+    user_name: str
     Shipment_Invoice_Number: str
     Container_Number : str
     Shipment_Description : str
@@ -70,6 +72,7 @@ def userEntity(user) -> dict:
 
 def shipEntity(ship) -> dict:
      return {
+        "user_name": str(ship["user_name"]),
         "Shipment_Invoice_Number": str(ship["Shipment_Invoice_Number"]),
         "Container_Number" : str(ship["Container_Number"]),
         "Shipment_Description" : str(ship["Shipment_Description"]),

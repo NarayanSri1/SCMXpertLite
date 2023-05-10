@@ -28,7 +28,7 @@ function getShipData() {
                 if(token == undefined){                  
                     window.location.href = "../../Frontend/templates/Login.html"
                 }else{   
-  fetch("http://127.0.0.1:8000/getShipData", {
+  fetch("http://127.0.0.1:8000/usergetShipdata", {
     method:'GET',
     headers: {
     Accept: 'application/json',

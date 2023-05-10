@@ -29,6 +29,7 @@ async function checkValidity(){
   var bid =  document.getElementById("bid")
   var goodsno = document.getElementById("goodsno")
   var error = document.getElementById("errorm")
+  var user_name = localStorage.getItem("user_name")
 
   function getbulkinput(){
       dataload();
@@ -51,6 +52,7 @@ async function checkValidity(){
 
   function dataload(){
       var data = {
+        "user_name": user_name,
         "Shipment_Invoice_Number": sinum.value,
         "Container_Number" : cnum.value,
         "Shipment_Description" : sdesc.value,
