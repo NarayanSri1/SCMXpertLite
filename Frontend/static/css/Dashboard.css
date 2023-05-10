@@ -12,8 +12,9 @@ div.shipment, div.vshipment, div.dds {
     display:none;
 }
 
-div.ddsadmin{
+div.ddsadmin {
     background-color:#000000;
+    display:none;
 }
 
 .header {

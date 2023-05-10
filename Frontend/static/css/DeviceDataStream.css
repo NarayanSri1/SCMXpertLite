@@ -4,8 +4,9 @@ body{
     background-repeat: no-repeat;
 }
 
-div.ddsadmin{
+div.ddsadmin {
     background-color:#000000;
+    display:none;
 }
 
 .card {

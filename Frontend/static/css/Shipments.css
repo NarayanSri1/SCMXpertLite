@@ -11,9 +11,11 @@ label {
 
 }
 
-div.ddsadmin{
-    background-color:#000000;
+div.ddsadmin {
+    background-color: #000000;
+    display: none;
 }
+
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;

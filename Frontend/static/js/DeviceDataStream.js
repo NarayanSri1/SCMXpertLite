@@ -5,9 +5,9 @@ async function checkValidity(){
             headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
             success:function(result) {
               console.log(result)
-                document.getElementById("username").innerHTML = result.response.token;
-                if(result.response.role == "Admin"){
-                  $("div.ddsadmin").show();
+              localStorage.setItem("user_name", result.response.token);
+              if(result.response.role == "Admin"){
+                    $("div.ddsadmin").show();
                 }
             }
             // error: function(xhr, ajaxOptions, thrownError){                    
