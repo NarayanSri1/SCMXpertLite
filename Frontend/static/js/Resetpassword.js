@@ -20,7 +20,7 @@
 
   function passwordreset(){
     $.ajax({
-        url: "http://127.0.0.1:8000/resetpassword", 
+        url: "http://"+window.location.hostname+":8000/resetpassword", 
         type: "PUT",
         dataType: "json",
         contentType: "application/json",
@@ -31,7 +31,11 @@
         success: function (result) {
             alert(result.message)
            console.log(result);
-           window.location.href="../../Frontend/templates/Login.html"
+           // for local
+            // window.location.href = "../../Frontend/templates/Login.html"
+
+            // for cloud
+            window.location.href="../templates/Login.html"
          },
          error: function(xhr) {
      

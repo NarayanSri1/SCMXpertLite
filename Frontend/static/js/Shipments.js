@@ -1,6 +1,6 @@
 async function checkValidity(){
   await $.ajax({
-          url:"http://"+"127.0.0.1"+":8000/dashboard",
+          url:"http://"+window.location.hostname+":8000/dashboard",
           type:"GET",
           headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
           success:function(result) {
@@ -68,7 +68,7 @@ async function checkValidity(){
         "Serial_Number_of_goods" : goodsno.value,
         }
         $.ajax({
-          url: "http://127.0.0.1:8000/shipment", 
+          url: "http://"+window.location.hostname+":8000/shipment", 
           type: "POST",
           headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
           dataType: "json",

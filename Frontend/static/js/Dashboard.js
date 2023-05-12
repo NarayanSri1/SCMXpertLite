@@ -1,6 +1,6 @@
 function checkValidity(){
     $.ajax({
-            url:"http://"+"127.0.0.1"+":8000/dashboard",
+            url:"http://"+window.location.hostname+":8000/dashboard",
             type:"GET",
             headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
             success:function(result) {
