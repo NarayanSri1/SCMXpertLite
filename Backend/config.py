@@ -10,7 +10,6 @@ url = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=maj
 # connection_string="mongodb://localhost:27017"
 client=MongoClient(url)
 
-
 #Creating DB
 db=client["SCMXpert"]
 

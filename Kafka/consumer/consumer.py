@@ -3,13 +3,22 @@ import sys
 from models import Device_Data
 from pymongo import MongoClient
 from kafka import KafkaConsumer
+import urllib.parse
 
 # MongoClient(db="SCMXpert", host="localhost", port=27017)
-client=MongoClient("mongodb://localhost:27017")
+
+username = urllib.parse.quote_plus('Narayan')
+password = urllib.parse.quote_plus("Test@12345")
+
+url = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
+# client=MongoClient("mongodb://localhost:27017")
+client=MongoClient(url)
 db=client["SCMXpert"]
 col3=db["Device_Data_Stream"]
 
-bootstrap_servers = "localhost:9092"
+# bootstrap_servers = "localhost:9092"
+bootstrap_servers = "kafka-kafka-1:9092"
+
 topic_name = 'device_data'
 
 

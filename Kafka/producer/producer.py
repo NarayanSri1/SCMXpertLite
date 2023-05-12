@@ -4,13 +4,18 @@ from kafka import KafkaProducer
 
 # establish a connection
 socket_connection=socket.socket()
+
 # allocate Host and Port - Host based on Local or Docker
-HOST = socket.gethostbyname(socket.gethostname())
+# HOST = socket.gethostbyname(socket.gethostname())
+HOST = "kafka-server-1"
 PORT = 5050
+
 # Bind Host and Port with the socket connection
 socket_connection.connect((HOST,PORT))
+
 # establish broker server
-bootstrap_servers = 'localhost:9092'
+# bootstrap_servers = 'localhost:9092'
+bootstrap_servers = 'kafka-kafka-1:9092'
 
 # assign topic name
 topicName= 'device_data'
