@@ -8,6 +8,7 @@ async function checkValidity(){
             localStorage.setItem("user_name", result.response.token);
             if(result.response.role == "Admin"){
                   $("div.ddsadmin").show();
+                  $("div.shipdata").show();
               }
           }
           // error: function(xhr, ajaxOptions, thrownError){                    

@@ -9,6 +9,10 @@ div.ddsadmin {
     display:none;
 }
 
+div.shipdata {
+    display:none;
+}
+
 .card {
     margin: auto;
     margin-top: 5%;
