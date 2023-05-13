@@ -1,6 +1,7 @@
 import socket
 import json
 from kafka import KafkaProducer
+from Backend.config import topicName
 
 # establish a connection
 socket_connection=socket.socket()
@@ -14,11 +15,9 @@ PORT = 5050
 socket_connection.connect((HOST,PORT))
 
 # establish broker server
-# bootstrap_servers = 'localhost:9092'
-bootstrap_servers = 'kafka-kafka-1:9092'
+bootstrap_servers = 'localhost:9092'
+# bootstrap_servers = 'kafka-kafka-1:9092'
 
-# assign topic name
-topicName= 'device_data'
 producer = KafkaProducer(bootstrap_servers= bootstrap_servers,
                          retries = 5,
                          value_serializer=lambda x: json.dumps(x).encode('utf-8'))

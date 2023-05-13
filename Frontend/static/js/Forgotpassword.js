@@ -16,10 +16,10 @@
            console.log(result.emailid);
            localStorage.setItem("emailid",result.emailid)
            // for local
-           window.location.href = "../../Frontend/templates/Resetpassword.html"
+          //  window.location.href = "../../Frontend/templates/Resetpassword.html"
 
            // for cloud
-            // window.location.href="../templates/Resetpassword.html"
+            window.location.href="../templates/Resetpassword.html"
          },
          error: function(xhr) {
           let femailErrorMsg = document.getElementById("ferrorMessageEmail")

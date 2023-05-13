@@ -3,23 +3,23 @@ import sys
 from models import Device_Data
 from pymongo import MongoClient
 from kafka import KafkaConsumer
-import urllib.parse
+from Backend.config import topicName
+# import urllib.parse
 
-# MongoClient(db="SCMXpert", host="localhost", port=27017)
 
-username = urllib.parse.quote_plus('Narayan')
-password = urllib.parse.quote_plus("Test@12345")
+# username = urllib.parse.quote_plus('Narayan')
+# password = urllib.parse.quote_plus("Test@12345")
 
-url = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
-# client=MongoClient("mongodb://localhost:27017")
-client=MongoClient(url)
+# url = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
+# client=MongoClient(url)
+
+client=MongoClient("mongodb://localhost:27017")
 db=client["SCMXpert"]
 col3=db["Device_Data_Stream"]
 
-# bootstrap_servers = "localhost:9092"
-bootstrap_servers = "kafka-kafka-1:9092"
 
-topic_name = 'device_data'
+bootstrap_servers = "localhost:9092"
+# bootstrap_servers = "kafka-kafka-1:9092"
 
 
 # def ddEntity(Device_Data) -> dict:
@@ -32,7 +32,7 @@ topic_name = 'device_data'
 #     }
 
 try:
-    consumer = KafkaConsumer(topic_name, 
+    consumer = KafkaConsumer(topicName, 
                              bootstrap_servers = bootstrap_servers,
                              auto_offset_reset = 'latest')
     

@@ -5,16 +5,17 @@ import urllib.parse
 username = urllib.parse.quote_plus('Narayan')
 password = urllib.parse.quote_plus("Test@12345")
 
-url = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
+# url = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
+connection_string="mongodb://localhost:27017"
 
-# connection_string="mongodb://localhost:27017"
-client=MongoClient(url)
+# client=MongoClient(url)
+client=MongoClient(connection_string)
 
 #Creating DB
-db=client["SCMXpert"]
+database=client["SCMXpert"]
 
 #Creating collections
-col1=db["Users"]
-col2=db["Shipment"]
-col3=db["Device_Data_Stream"]
+users= database["Users"]
+shipment= database["Shipment"]
+device_data_stream= database["Device_Data_Stream"]
 
