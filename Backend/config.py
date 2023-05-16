@@ -1,12 +1,16 @@
 #establish connection between Python and Mongo
+# import os
+# from dotenv import load_dotenv
 from pymongo import MongoClient
-import urllib.parse
+# import urllib.parse
 
-username = urllib.parse.quote_plus('Narayan')
-password = urllib.parse.quote_plus("Test@12345")
+# load_dotenv(dotenv_path=".env")
 
-# url = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
-connection_string="mongodb://localhost:27017"
+# username = urllib.parse.quote_plus(os.getenv("databaseusername"))
+# password = urllib.parse.quote_plus(os.getenv("databasepassword"))
+
+# url = os.getenv("databaseurl").format(username,password)
+# connection_string="mongodb://localhost:27017"
 
 # client=MongoClient(url)
 client=MongoClient(connection_string)
@@ -18,4 +22,3 @@ database=client["SCMXpert"]
 users= database["Users"]
 shipment= database["Shipment"]
 device_data_stream= database["Device_Data_Stream"]
-

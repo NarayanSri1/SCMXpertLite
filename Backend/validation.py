@@ -1,7 +1,7 @@
 # importing HTTPexception
 from fastapi import HTTPException
 from models import user, ship
-from config import col2
+from config import shipment
 import re
 
 def validation(User:user):
@@ -30,7 +30,7 @@ def shipvalidation(Ship:ship):
     s10 = Ship.NDC_Number
     s11 = Ship.Batch_ID
     s12= Ship.Serial_Number_of_goods
-    shipment_check=col2.find_one({"Shipment_Invoice_Number":s1})
+    shipment_check=shipment.find_one({"Shipment_Invoice_Number":s1})
 
     if shipment_check:
         raise HTTPException(

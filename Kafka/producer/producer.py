@@ -1,14 +1,13 @@
 import socket
 import json
 from kafka import KafkaProducer
-from Backend.config import topicName
 
 # establish a connection
 socket_connection=socket.socket()
 
 # allocate Host and Port - Host based on Local or Docker
-# HOST = socket.gethostbyname(socket.gethostname())
-HOST = "kafka-server-1"
+HOST = socket.gethostbyname(socket.gethostname())
+# HOST = "kafka-server-1"
 PORT = 5050
 
 # Bind Host and Port with the socket connection
@@ -16,8 +15,9 @@ socket_connection.connect((HOST,PORT))
 
 # establish broker server
 bootstrap_servers = 'localhost:9092'
-# bootstrap_servers = 'kafka-kafka-1:9092'
+# bootstrap_servers = 'backend-kafka-1:9092'
 
+topicName = 'Device_Data_Stream'
 producer = KafkaProducer(bootstrap_servers= bootstrap_servers,
                          retries = 5,
                          value_serializer=lambda x: json.dumps(x).encode('utf-8'))
@@ -34,5 +34,5 @@ while True:
         
     except Exception as exception:
         print(exception)
-
+    
 socket_connection.close()
