@@ -59,10 +59,10 @@ function usergetShipdata() {
     var token = localStorage.getItem("access_token");
                 if(token == undefined){                  
                   // for local
-                  window.location.href = "../../Frontend/templates/Login.html"
+                  // window.location.href = "../../Frontend/templates/Login.html"
                   
                   // for cloud
-                  // window.location.href="../templates/Login.html"
+                  window.location.href="../templates/Login.html"
                 }else{   
   fetch("http://"+window.location.hostname+":8000/getShipData", {
     method:'GET',

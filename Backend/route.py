@@ -85,6 +85,7 @@ async def create_shipment(Shipment: ship, token:str=Depends(get_current_user)):
         raise HTTPException(
             status_code=401, detail='Unauthorized Entry'
             )
+    
 # --get all shipment collection
 @add.get('/getShipData')
 def get_shipmentdata(token:str=Depends(get_current_user)):
