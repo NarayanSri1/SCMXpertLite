@@ -10,7 +10,7 @@ from pymongo import MongoClient
 # password = urllib.parse.quote_plus(os.getenv("databasepassword"))
 
 # url = os.getenv("databaseurl").format(username,password)
-# connection_string="mongodb://localhost:27017"
+connection_string="mongodb://localhost:27017"
 
 # client=MongoClient(url)
 client=MongoClient(connection_string)

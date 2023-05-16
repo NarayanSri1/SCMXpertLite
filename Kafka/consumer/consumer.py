@@ -2,11 +2,11 @@ import json
 import sys
 from models import Device_Data
 from kafka import KafkaConsumer
-from config import topicName,Device_Data_Stream
+from config import topicName, Device_Data_Stream
 
 
-# bootstrap_servers = "localhost:9092"
-bootstrap_servers = "backend-kafka-1:9092"
+bootstrap_servers = "localhost:9092"
+# bootstrap_servers = "backend-kafka-1:9092"
 
 
 try:

@@ -1,4 +1,3 @@
-from enum import Enum
 from typing import Optional
 # include Basemodel classes
 from pydantic import BaseModel
