@@ -1,6 +1,6 @@
 async function checkValidity(){
   await $.ajax({
-          url:"http://"+"127.0.0.1"+":8000/dashboard",
+          url:"http://"+window.location.hostname+":8000/dashboard",
           type:"GET",
           headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
           success:function(result) {
@@ -8,6 +8,7 @@ async function checkValidity(){
             localStorage.setItem("user_name", result.response.token);
             if(result.response.role == "Admin"){
                   $("div.ddsadmin").show();
+                  $("div.allshipmentdata").show();
               }
           }
           // error: function(xhr, ajaxOptions, thrownError){                    
@@ -19,9 +20,13 @@ async function checkValidity(){
 function usergetShipdata() {
     var token = localStorage.getItem("access_token");
                 if(token == undefined){                  
-                    window.location.href = "../../Frontend/templates/Login.html"
+                  // for local
+                  window.location.href = "../../Frontend/templates/Login.html"
+                  
+                  // for cloud
+                  // window.location.href="../templates/Login.html"
                 }else{   
-  fetch("http://127.0.0.1:8000/usergetShipdata", {
+  fetch("http://"+window.location.hostname+":8000/usergetShipdata", {
     method:'GET',
     headers: {
     Accept: 'application/json',
@@ -53,9 +58,13 @@ function usergetShipdata() {
   function getShipData() {
     var token = localStorage.getItem("access_token");
                 if(token == undefined){                  
-                    window.location.href = "../../Frontend/templates/Login.html"
+                  // for local
+                  window.location.href = "../../Frontend/templates/Login.html"
+                  
+                  // for cloud
+                  // window.location.href="../templates/Login.html"
                 }else{   
-  fetch("http://127.0.0.1:8000/getShipData", {
+  fetch("http://"+window.location.hostname+":8000/getShipData", {
     method:'GET',
     headers: {
     Accept: 'application/json',

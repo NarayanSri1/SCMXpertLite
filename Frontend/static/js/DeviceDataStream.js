@@ -1,6 +1,6 @@
 async function checkValidity(){
     await $.ajax({
-            url:"http://"+"127.0.0.1"+":8000/dashboard",
+            url:"http://"+window.location.hostname+":8000/dashboard",
             type:"GET",
             headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
             success:function(result) {
@@ -19,9 +19,13 @@ async function checkValidity(){
 function getDeviceData() {
     var token = localStorage.getItem("access_token");
                 if(token == undefined){                  
-                    window.location.href = "../../Frontend/templates/Login.html"
+                  // for local
+                  window.location.href = "../../Frontend/templates/Login.html"
+                  
+                  // for cloud
+                  // window.location.href="../templates/Login.html"
                 }else{   
-  fetch("http://127.0.0.1:8000/devicedata", {
+  fetch("http://"+window.location.hostname+":8000/devicedata", {
     method:'GET',
     headers: {
     Accept: 'application/json',

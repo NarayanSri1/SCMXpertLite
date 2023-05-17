@@ -1,6 +1,7 @@
 <!Doctype HTML>
-<html>
-<head>
+<html lang="en">
+    <title>User's Collection</title>
+    <head>
         <!-- calling Bootstrap and API packages into HTML pages -->
         <meta charset="UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,9 +27,12 @@
         <div class="card">
             <div class="col-auto">
                 <button type="submit" class="button" id="btn" onclick="usergetShipdata()">Load My Data</button> <br>
-                <button type="submit" class="button" id="btn" onclick="getShipData()">Load All Data</button>
+                <div class="allshipmentdata">
+                    <button type="submit" class="button" id="btn" onclick="getShipData()">Load All Data</button>
+                </div>
             </div>
             <table class="styled-table">
+                <caption>Retrieves Shipment Data</caption>
                 <thead>
                     <tr>
                         <th>Shipment/Invoice Number</th>

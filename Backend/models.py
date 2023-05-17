@@ -1,8 +1,6 @@
-from enum import Enum
 from typing import Optional
 # include Basemodel classes
-from pydantic import BaseModel, Field as PydanticField
-from bson.objectid import ObjectId as BsonObjectId
+from pydantic import BaseModel
 
 # creating a basemodel class
 class user(BaseModel):
@@ -95,18 +93,3 @@ def ddEntity(Device_Data) -> dict:
         "Route_From": str(Device_Data["Route_From"]),
         "Route_To": str(Device_Data(["Route_To"])),
     }
-
-
-
-
-
-# to get dictionary to list - to show data to 
-
-# def serializeDict(a) -> dict:
-#     return {**{i:str(a[i]) for i in a if i=='_id'},**{i:a[i] for i in a if i!='_id'}}
-
-# def serializeList(entity) -> list:
-#     return [serializeDict(a) for a in entity]
-
-
-           

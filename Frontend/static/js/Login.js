@@ -103,7 +103,7 @@
             "password": password.value,
           }
           $.ajax({
-            url: "http://127.0.0.1:8000/login", 
+            url: "http://"+window.location.hostname+":8000/login", 
             type: "POST",
             dataType: "json",
             contentType: "application/json",
@@ -112,8 +112,14 @@
               // alert("User is Present!")
               console.log(result.access_token)
               localStorage.setItem("access_token", result.access_token)
-              // redirecting to Dashboard
-              window.location.href = "../../Frontend/templates/Dashboard.html"
+    
+              // for local
+            // redirecting to Dashboard
+            window.location.href = "../../Frontend/templates/Dashboard.html"
+
+            // for cloud
+            // window.location.href="/templates/Dashboard.html"
+
              },
              error: function(xhr) {
               let emailErrorMsg = document.getElementById("errorMessageEmail")

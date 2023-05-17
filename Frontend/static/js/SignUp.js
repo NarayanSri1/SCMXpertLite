@@ -39,7 +39,7 @@
           "role":urole.value
         }
         $.ajax({
-          url: "http://127.0.0.1:8000/signup", 
+          url: "http://"+window.location.hostname+":8000/signup", 
           type: "POST",
           dataType: "json",
           contentType: "application/json",
@@ -47,7 +47,11 @@
           success: function (result) {
             clearinput();
             console.log(result)
+            // for local
             window.location.href = "../../Frontend/templates/Login.html"
+
+            // for cloud
+            // window.location.href="../templates/Login.html"
            },
            error: function(xhr) {
              console.log(xhr.responseJSON.detail)

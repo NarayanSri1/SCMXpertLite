@@ -21,8 +21,5 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
   return verify_access_token(token)
 
 def verify_access_token(token:str):
-    # payload assigns the user with the token being provided
-    # payload = {'sub': user.username, 'iat': datetime.datetime.utcnow(),
-    #            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=90)}
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     return payload

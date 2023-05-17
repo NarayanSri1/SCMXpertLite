@@ -1,29 +1,16 @@
 import json
 import sys
 from models import Device_Data
-from pymongo import MongoClient
 from kafka import KafkaConsumer
+from config import topicName, Device_Data_Stream
 
-# MongoClient(db="SCMXpert", host="localhost", port=27017)
-client=MongoClient("mongodb://localhost:27017")
-db=client["SCMXpert"]
-col3=db["Device_Data_Stream"]
 
 bootstrap_servers = "localhost:9092"
-topic_name = 'device_data'
+# bootstrap_servers = "backend-kafka-1:9092"
 
-
-# def ddEntity(Device_Data) -> dict:
-#     return{
-#         "Battery_Level":str(Device_Data["Battery_Level"]),
-#         "Device_ID": str(Device_Data["Device_ID"]),
-#         "First_Sensor_Temperature": str(Device_Data["First_Sensor_Temperature"]),
-#         "Route_From": str(Device_Data["Route_From"]),
-#         "Route_To": str(Device_Data(["Route_To"]))
-#     }
 
 try:
-    consumer = KafkaConsumer(topic_name, 
+    consumer = KafkaConsumer(topicName, 
                              bootstrap_servers = bootstrap_servers,
                              auto_offset_reset = 'latest')
     
@@ -36,25 +23,9 @@ try:
             Route_From= data["Route_From"],
             Route_To= data["Route_To"]
         )
-        col3.insert_one(dict(Transport_Data))
+        Device_Data_Stream.insert_one(dict(Transport_Data))
         print(Transport_Data)
 
 except KeyboardInterrupt:
     sys.exit()
 
-
-# try:
-#     consumer = KafkaConsumer(topic_name, 
-#                              bootstrap_servers = bootstrap_servers,
-#                              auto_offset_reset = 'latest')
-    
-#     for data in consumer:
-#         try:
-#             data = json.loads(data.value)
-#             metadata = col3.insert_one(data)
-
-#         except json.decoder.JSONDecodeError:
-#             continue
-
-# except KeyboardInterrupt:
-#     sys.exit()

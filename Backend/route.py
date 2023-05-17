@@ -8,15 +8,16 @@ import json
 # import function from other user defined python files
 # from database import conn
 from jwt import create_access_token, get_current_user
-from config import col1, col2, col3
+from config import users, shipment, device_data_stream
 
 # routing variable
 add=APIRouter()
 
-# Register user via Sign-in Page
+# Register user v
+# ia Sign-in Page
 @add.post('/signup')
 async def create_user(Signup: user):
-    email_check=col1.find_one({"emailid":Signup.emailid})
+    email_check=users.find_one({"emailid":Signup.emailid})
     validation(Signup)
     if email_check:
         raise HTTPException(
@@ -25,14 +26,14 @@ async def create_user(Signup: user):
     else:
         hashed_pass=Hash.hash_password(Signup.password)
         Signup.password=hashed_pass
-        col1.insert_one(dict(Signup))
+        users.insert_one(dict(Signup))
     # this returns the user created --return (create_user)
     return {"Registered Successfully"}
 
 # Login Page validation
 @add.post('/login')
 async def find_user(Login:login):
-    user_data=col1.find_one({"emailid":Login.emailid})
+    user_data=users.find_one({"emailid":Login.emailid})
     if not user_data:
         raise HTTPException(
             status_code=400,detail="Email not found."
@@ -50,7 +51,7 @@ async def find_user(Login:login):
 # Api for forgot password flow
 @add.post('/forgotpwd')
 async def find_user(Fwt:forgotpwd):
-    user_data=col1.find_one({"emailid":Fwt.emailid})
+    user_data=users.find_one({"emailid":Fwt.emailid})
     if not user_data:
         raise HTTPException(
             status_code=400,detail="Email not found."
@@ -63,7 +64,7 @@ async def find_user(Fwt:login):
           hashed_pass=Hash.hash_password(Fwt.password)
           Fwt.password=hashed_pass
           data = dict(Fwt)
-          col1.find_one_and_update({"emailid":Fwt.emailid}, {'$set': data})
+          users.find_one_and_update({"emailid":Fwt.emailid}, {'$set': data})
           print(Fwt.password)
           return {'message': 'Password Updated'}
 
@@ -78,17 +79,18 @@ async def redirect(token:str=Depends(get_current_user)):
 async def create_shipment(Shipment: ship, token:str=Depends(get_current_user)):
     if token:
         shipvalidation(Shipment)
-        col2.insert_one(dict(Shipment))
+        shipment.insert_one(dict(Shipment))
         return {"Shipment Created!"}
     else:
         raise HTTPException(
             status_code=401, detail='Unauthorized Entry'
             )
+    
 # --get all shipment collection
 @add.get('/getShipData')
 def get_shipmentdata(token:str=Depends(get_current_user)):
     if token:
-        data = col2.find({},{"_id":0})
+        data = shipment.find({},{"_id":0})
         response = json.loads(json_util.dumps(data))
         return response
     else:
@@ -99,7 +101,7 @@ def get_shipmentdata(token:str=Depends(get_current_user)):
 @add.get('/usergetShipdata')
 def get_usershipmentdata(token:str=Depends(get_current_user)):
     if token:
-        data = col2.find({"user_name":token["token"]})
+        data = shipment.find({"user_name":token["token"]})
         response = json.loads(json_util.dumps(data))
         return response
     
@@ -113,7 +115,7 @@ def get_usershipmentdata(token:str=Depends(get_current_user)):
 @add.get('/getusers')
 def get_users():
     users = []
-    docs = col1.find({})
+    docs = users.find({})
     for user in docs:
         users.append(userEntity(user))
     return users
@@ -122,7 +124,7 @@ def get_users():
 @add.get('/devicedata')
 def get_devicedata(token:str=Depends(get_current_user)):
     if token:
-        data = col3.find({},{"_id":0})
+        data = device_data_stream.find({},{"_id":0})
         response = json.loads(json_util.dumps(data))
         return response
     else:

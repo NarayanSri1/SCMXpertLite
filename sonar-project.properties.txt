@@ -1,0 +1,16 @@
+# must be unique in a given SonarQube instance
+sonar.projectKey=sqp_cbfe5fa7c2505903b05121285cc301fb9f3ddc61
+
+# --- optional properties ---
+
+# defaults to project key
+#sonar.projectName=scmxpertlite
+# defaults to 'not provided'
+#sonar.projectVersion=1.0
+ 
+# Path is relative to the sonar-project.properties file. Defaults to .
+#sonar.sources=.
+ 
+# Encoding of the source code. Default is default system encoding
+#sonar.sourceEncoding=UTF-8
+

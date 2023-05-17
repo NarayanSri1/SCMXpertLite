@@ -5,7 +5,7 @@
  
   function emailenter(){
     $.ajax({
-        url: "http://127.0.0.1:8000/forgotpwd", 
+        url: "http://"+window.location.hostname+":8000/forgotpwd", 
         type: "POST",
         dataType: "json",
         contentType: "application/json",
@@ -15,7 +15,11 @@
         success: function (result) {
            console.log(result.emailid);
            localStorage.setItem("emailid",result.emailid)
-           window.location.href="../../Frontend/templates/Resetpassword.html"
+           // for local
+           window.location.href = "../../Frontend/templates/Resetpassword.html"
+
+           // for cloud
+            // window.location.href="../templates/Resetpassword.html"
          },
          error: function(xhr) {
           let femailErrorMsg = document.getElementById("ferrorMessageEmail")
