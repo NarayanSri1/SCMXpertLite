@@ -91,6 +91,10 @@ async function checkValidity(){
               error.style.display="flex";
               error.innerHTML="PO_Number should be a number of 6 digits"
             }
+            else if (xhr.responseJSON.detail=="Shipment already exists."){
+              error.style.display="flex";
+              error.innerHTML="Shipment already exists."
+            }
             else if (xhr.responseJSON.detail=="Shipment/Invoice Number should consist only numbers."){
               error.style.display="flex";
               error.innerHTML="Shipment/Invoice Number should consist only numbers."
