@@ -1,15 +1,16 @@
-import urllib.parse
-import os
-from dotenv import load_dotenv
+# import urllib.parse
+# import os
+# from dotenv import load_dotenv
 from pymongo import MongoClient
 
-load_dotenv(dotenv_path=".env")
+# load_dotenv(dotenv_path=".env")
 
 
-username = urllib.parse.quote_plus(os.getenv("databaseusername"))
-password = urllib.parse.quote_plus(os.getenv("databasepassword"))
+# username = urllib.parse.quote_plus(os.getenv("databaseusername"))
+# password = urllib.parse.quote_plus(os.getenv("databasepassword"))
 
-databaseurl = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
+# databaseurl = "mongodb+srv://{}:{}@scmexpert.u5bh017.mongodb.net/?retryWrites=true&w=majority".format(username, password)
+databaseurl = "mongodb://localhost:27017"
 
 
 # client=MongoClient(os.getenv("databaselocal"))
