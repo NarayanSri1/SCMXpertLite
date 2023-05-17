@@ -32,10 +32,10 @@
             alert(result.message)
            console.log(result);
            // for local
-            window.location.href = "../../Frontend/templates/Login.html"
+            // window.location.href = "../../Frontend/templates/Login.html"
 
             // for cloud
-            // window.location.href="../templates/Login.html"
+            window.location.href="../templates/Login.html"
          },
          error: function(xhr) {
      
