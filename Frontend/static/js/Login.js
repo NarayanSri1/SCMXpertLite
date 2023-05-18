@@ -118,7 +118,7 @@
             // window.location.href = "../../Frontend/templates/Dashboard.html"
 
             // for cloud
-            window.location.href="/templates/Dashboard.html"
+            window.location.href="../templates/Dashboard.html"
 
              },
              error: function(xhr) {
