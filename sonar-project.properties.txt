@@ -1,5 +1,5 @@
 # must be unique in a given SonarQube instance
-sonar.projectKey=sqp_cbfe5fa7c2505903b05121285cc301fb9f3ddc61
+sonar.projectKey=sqp_9dd9653e7ae4583af9210106aeadc292549dd834
 
 # --- optional properties ---
 
