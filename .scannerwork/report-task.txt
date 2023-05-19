@@ -2,5 +2,5 @@ projectKey=scmxpertlite
 serverUrl=http://localhost:9000
 serverVersion=10.0.0.68432
 dashboardUrl=http://localhost:9000/dashboard?id=scmxpertlite
-ceTaskId=AYgnp4CRArcRYwNth5HL
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYgnp4CRArcRYwNth5HL
+ceTaskId=AYgwaJttfFm1_QYM__ek
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYgwaJttfFm1_QYM__ek
