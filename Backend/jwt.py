@@ -1,6 +1,6 @@
 from fastapi import Depends
 from datetime import timedelta, datetime
-from jose import jwt # serializeList, serializeDict
+from jose import jwt
 from fastapi.security import OAuth2PasswordBearer
 
 # assigning variables for JWT

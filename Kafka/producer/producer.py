@@ -6,8 +6,8 @@ from kafka import KafkaProducer
 socket_connection=socket.socket()
 
 # allocate Host and Port - Host based on Local or Docker
-# HOST = socket.gethostbyname(socket.gethostname())
-HOST = "root-server-1"
+HOST = socket.gethostbyname(socket.gethostname())
+# HOST = "root-server-1"
 PORT = 5050
 
 # Bind Host and Port with the socket connection
@@ -15,11 +15,9 @@ socket_connection.connect((HOST,PORT))
 
 # establish broker server
 
-# bootstrap_servers = 'localhost:9092'
+bootstrap_servers = "localhost:9092"
 # bootstrap_servers = 'backend-kafka-1:9092'
-
-# bootstrap_servers = 'localhost:9092'
-bootstrap_servers = 'root-kafka-1:9092'
+# bootstrap_servers = 'root-kafka-1:9092'
 
 
 topicName = 'Device_Data_Stream'

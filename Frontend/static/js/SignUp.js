@@ -102,7 +102,7 @@
       }
     }
 
-    function validationemail(value){
+    function validationemail(){
       var b  = email.value;
       let emailErrorMsg = document.getElementById("errorMessageEmail");
       if (b==""){

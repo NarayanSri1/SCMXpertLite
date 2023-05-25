@@ -1,6 +1,6 @@
 async function checkValidity(){
   await $.ajax({
-          url:"http://"+window.location.hostname+":8000/dashboard",
+          url:"http://"+ window.location.hostname +":8000/dashboard",
           type:"GET",
           headers: {"Authorization": 'Bearer ' + localStorage.getItem('access_token')},
           success:function(result) {
@@ -82,22 +82,26 @@ async function checkValidity(){
             // console.log("Registered Successfully")
               // when call is sucessfull
            },
-           error: function e(xhr){
+           error: function(xhr){
             if(xhr.responseJSON.detail=="Please enter the required fields!"){
               error.style.display="flex";
               error.innerHTML="Please enter the required fields!"
             }
-            else if (xhr.responseJSON.detail=="PO_Number should be a number of 6 digits"){
+            else if (xhr.responseJSON.detail=="PO Number should be a number of six digits."){
               error.style.display="flex";
-              error.innerHTML="PO_Number should be a number of 6 digits"
+              error.innerHTML="PO Number should be a number of six digits."
             }
             else if (xhr.responseJSON.detail=="Shipment already exists."){
               error.style.display="flex";
               error.innerHTML="Shipment already exists."
             }
-            else if (xhr.responseJSON.detail=="Shipment/Invoice Number should consist only numbers."){
+            else if (xhr.responseJSON.detail=="Shipment number should only be alphanumeric."){
               error.style.display="flex";
-              error.innerHTML="Shipment/Invoice Number should consist only numbers."
+              error.innerHTML="Shipment number should only be alphanumeric."
+            }
+            else if (xhr.responseJSON.detail=="Please enter the description within 120 characters."){
+              error.style.display="flex";
+              error.innerHTML="Please enter the description within 120 characters."
             }
           }
         }); // ajax call closing

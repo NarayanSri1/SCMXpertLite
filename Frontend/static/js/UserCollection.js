@@ -26,7 +26,7 @@ function usergetShipdata() {
                   // for cloud
                   // window.location.href="../templates/Login.html"
                 }else{   
-  fetch("http://"+window.location.hostname+":8000/usergetShipdata", {
+  fetch("http://"+ window.location.hostname +":8000/usergetShipdata", {
     method:'GET',
     headers: {
     Accept: 'application/json',
@@ -55,7 +55,7 @@ function usergetShipdata() {
 }
   }
 
-  function getShipData() {
+function getShipData() {
     var token = localStorage.getItem("access_token");
                 if(token == undefined){                  
                   // for local
